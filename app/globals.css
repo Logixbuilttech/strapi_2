@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-Anton: "Anton";
+  --font-Archivo: "Archivo";
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  background: #16363d;
+  color: var(--foreground);
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Anton";
+}
+p {
+  font-family: "Archivo";
+}
+
+.headBG {
+  background: #16363d;
+  position: relative;
+}
+
+.headBG:before {
+  content: "";
+  background: url(../public/images/AngularGradient.svg) no-repeat center 0;
+  width: 100%;
+  height: 410px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.headBG:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.01);
+  filter: blur(88.5042px);
+  backdrop-filter: blur(134.097px);
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.headBG-Bottam {
+  mix-blend-mode: multiply;
+  background: #458a99;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.headBG-Bottam:before {
+  content: "";
+  background: url(../public/images/HeadBottomBG.svg) no-repeat center 0;
+  width: 100%;
+  height: 476px;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.animated-text h4 {
+  font-family: "Anton";
+  font-size: 290px;
+  line-height: 0.85;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.animated-text h4 span {
+  opacity: 0.2;
+  filter: blur(7.445px);
+}
+.animated-text h4 span.blueNone {
+  opacity: 1;
+  filter: none;
+}
+.mobileIcon,
+.NavIcon {
+  width: 52px;
+  height: 52px;
+  background: #eeecde;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+}
+.menu-open .mobileIcon,
+.menu-open .NavIcon {
+  background: #16363d;
+}
+
+.desktopView {
+  display: block;
+}
+.Hamberger {
+  display: none;
+}
+
+.menu-open .desktopView {
+  display: none;
+}
+.menu-open .Hamberger {
+  display: block;
+}
+
+.HambergerMenu {
+  overflow: visible;
+  height: auto;
+  opacity: 1;
+  width: 100%;
+  padding: 64px;
+  display: grid;
+  gap: 24px;
+  text-align: center;
+  background: url(../public/images/HambergerBG.png) no-repeat center 0;
+  border-radius: 16px 16px 34px 34px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin: 8px 0 0;
+}
+.headerBox {
+  height: 68px;
+  transition: ease-in-out 0.5s;
+  border-radius: 34px;
+  overflow: hidden;
+}
+.menu-open .headerBox {
+  background: #eeecde;
+  filter: none;
+  height: 571px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.menu-open .slide-up {
+  animation: slideUp 0.15s forwards;
+}
+.slide-up:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.slide-up:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.slide-up:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.slide-up:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.slide-up:nth-child(5) {
+  animation-delay: 1s;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.textShow {
+  display: inline-block;
+  position: relative;
+}
+.textShow:before {
+  position: absolute;
+  left: -100%;
+  top: 0;
+  content: "error 404 error 404 error 404";
+  font-family: "Anton";
+  font-weight: 400;
+  font-size: 290px;
+  line-height: 113%;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #d2e7d3;
+  opacity: 0.2;
+  filter: blur(7.445px);
+}
+
+@media (max-width: 767px) {
+  .headerBox {
+    height: 52px;
+  }
+  .mobileIcon,
+  .NavIcon {
+    height: 44px;
+    width: 44px;
+  }
+  .logo img {
+    height: 42px;
+    width: auto;
+  }
+  .headerBox {
+    border-radius: 24px;
+  }
+  .menu-open .headerBox {
+    height: 396px;
+  }
+  .HambergerMenu {
+    padding: 40px 10px;
+    border-radius: 12px 12px 24px 24px;
+    margin-top: 10px;
+  }
+}
