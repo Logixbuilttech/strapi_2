@@ -44,7 +44,7 @@ const HeroText = ({
           } else if (part.span) {
             return (
               <span
-                className="bg-[rgba(233,245,172,1)] text-[rgba(22,54,61,1)] inline-block align-top leading-[100%] rounded-[3px] px-1"
+                className="highlight"
                 key={index}
               >
                 {part.text}
@@ -60,7 +60,7 @@ const HeroText = ({
         <div
           className={`border-t-[1px] border-[rgba(238,236,222,.15)] pt-[30px] md:pt-10 lg:pt-12 ${className}`}
         >
-          <div className="justify-center grid text-center">
+          <div className="justify-center grid text-center max-w-[650px] mx-auto">
             {renderSmallText()}
             {showButton && (
               <div className="pt-9 md:pt-12 lg:pt-[52px]">

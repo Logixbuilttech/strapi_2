@@ -1,20 +1,14 @@
 import HeroText from "../HeroText";
+import { parseStrapiRichText } from "@/lib/parseStrapiRichText";
 
-const heroParts = [
-  { text: "Empowering Smarter" },
-  { br: true },
-  { text: "Growth Through " },
-  { span: true, text: "Technology" },
-  { br: true },
-  { span: true, text: "Design" },
-  { text: " and Digital " },
-  { span: true, text: "Innovation " },
-];
+const HomeHero = ({ data }) => {
+  if (!data) return null;
 
-const smallText =
-  "RenewEdge-Solutions is a technology, design, and digital solutions <br/> company helping people and organizations solve problems, simplify <br/> systems, and scale smarter";
+  const heroParts = parseStrapiRichText(data.text);
+  const smallText = data.smallText;
+  const buttonText = data.Button?.text || "Learn about us";
+  const buttonHref = data.Button?.href || "#";
 
-const HomeHero = () => {
   return (
     <section className="headBG">
       <div className="headBG-Bottam"></div>
@@ -22,9 +16,9 @@ const HomeHero = () => {
         <HeroText
           heroParts={heroParts}
           smallText={smallText}
-          showButton={true}
-          buttonText="Learn about us"
-          onButtonClick={() => console.log("Button clicked!")}
+          showButton={!!data.Button}
+          buttonText={buttonText}
+          onButtonClick={() => window.location.href = buttonHref}
           className="pb-[84px] md:pb-[92px] lg:pb-[116px]"
         />
       </div>

@@ -1,13 +1,28 @@
 import React from "react";
 
+// Helper to render parsed rich text arrays (with highlight support)
+function renderRichText(parts) {
+  if (!Array.isArray(parts)) {
+    // fallback for old usage or empty input
+    if (typeof parts === "string") return parts;
+    return null;
+  }
+  return parts.map((part, idx) => {
+    if (part.br) return <br key={idx} />;
+    if (part.span) return <span className="highlight" key={idx}>{part.text}</span>;
+    return <React.Fragment key={idx}>{part.text}</React.Fragment>;
+  });
+}
+
 const SectionBlock = ({
   title,
   badgeNumber,
   heading,
   DescriptionText = [],
-}) => {
+  className="",
+} ) => {console.log("DescriptionText", DescriptionText)
   return (
-    <div className="pb-12 lg:pb-[64px]">
+    <div className={`pb-12 lg:pb-[64px] ${className}`}>
       <div className="flex pb-[30px] md:pb-10 lg:pb-[48px]">
         <div className="w-1/2">
           {title && (
@@ -31,23 +46,22 @@ const SectionBlock = ({
         <div className="w-1/2">
           <h3
             className="text-[30px] md:text-[44px] lg:text-[66px] leading-[113%] font-normal uppercase text-[#16363D]"
-            dangerouslySetInnerHTML={{ __html: heading }}
-          />
+          >
+            {renderRichText(heading)}
+          </h3>
         </div>
       </div>
 
       <div
-        className="relative pt-[48px] before:content-[''] before:bg-[rgba(22,54,61,.15)] before:absolute before:top-0 before:left-[-50%] 
+        className="relative pt-[48px] before:content-[''] before:bg-[rgba(22,54,61,.15)] before:absolute before:top-0 before:left-[-50%] \
         before:w-[200%] before:h-[1px]"
       >
         <div className="grid gap-4 w-1/2 ml-auto">
-          {DescriptionText.map((text, index) => (
-            <p
-              key={index}
-              className="text-[14px] md:text-[18px] lg:text-[22px] text-[#16363D] leading-[120%] tracking-[-0.02em]"
-              dangerouslySetInnerHTML={{ __html: text }}
-            />
-          ))}
+          {Array.isArray(DescriptionText) && DescriptionText.length > 0 ? (
+            <p className="text-[14px] md:text-[18px] lg:text-[22px] text-[#16363D] leading-[120%] tracking-[-0.02em]">
+              {renderRichText(DescriptionText)}
+            </p>
+          ) : null}
         </div>
       </div>
     </div>

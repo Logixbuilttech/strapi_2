@@ -240,3 +240,15 @@ p {
     margin-top: 10px;
   }
 }
+
+/* Highlighted text for HeroText */
+.highlight {
+  background: rgba(233,245,172,1);
+  color: rgba(22,54,61,1);
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1;
+  border-radius: 3px;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}

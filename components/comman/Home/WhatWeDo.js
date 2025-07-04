@@ -6,7 +6,8 @@ import BackgroundBlock from "@/components/comman/BackgroundBlock";
 import Container from "@/components/comman/Container";
 import SectionBlock from "../SectionBlock";
 
-const WhatWeDo = () => {
+const WhatWeDo = ({data}) => {
+  console.log('what-we-do', data);
   const WhatWeDoBlock = [
     {
       id: 1,
