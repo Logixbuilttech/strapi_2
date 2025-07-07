@@ -40,7 +40,9 @@ h6 {
 p {
   font-family: "Archivo";
 }
-
+textarea {
+  resize: none;
+}
 .headBG {
   background: #16363d;
   position: relative;
@@ -215,6 +217,41 @@ p {
   filter: blur(7.445px);
 }
 
+.cstmRadio input,
+.cstmCheckBox input {
+  display: none;
+}
+.cstmRadio input + label,
+.cstmCheckBox input + label {
+  position: relative;
+  color: #16363d;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: var(--font-Archivo);
+  text-transform: uppercase;
+  background: rgba(22, 54, 61, 0.08);
+  border-radius: 100px;
+  padding: 21px 32px;
+  display: block;
+  line-height: 18px;
+}
+.cstmRadio input:checked + label,
+.cstmCheckBox input:checked + label {
+  background: #16363d;
+  color: #eeecde;
+}
+
+.contactForm input {
+  height: 66px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #eeecde;
+}
+.contactForm textarea {
+  height: 158px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #eeecde;
+}
+
 @media (max-width: 767px) {
   .headerBox {
     height: 52px;
@@ -243,8 +280,8 @@ p {
 
 /* Highlighted text for HeroText */
 .highlight {
-  background: rgba(233,245,172,1);
-  color: rgba(22,54,61,1);
+  background: rgba(233, 245, 172, 1);
+  color: rgba(22, 54, 61, 1);
   display: inline-block;
   vertical-align: top;
   line-height: 1;
