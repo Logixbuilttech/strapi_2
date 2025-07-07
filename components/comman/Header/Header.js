@@ -35,12 +35,9 @@ const Header = ({ HeaderData }) => {
   }, [menuOpen]);
 
   // Dynamic menu and logo from Strapi
-  const menu = HeaderData?.TopNav?.headerLink || [];
-  const logo = HeaderData?.TopNav?.logo?.Image;
-  const logoActive = HeaderData?.TopNav?.logo?.HeaderActiveImage;
-  console.log("🚀 ~ Header ~ logo:", logo.url)
-  console.log("🚀 ~ Header ~ logoActive:", logoActive.url)
-  console.log('image url', `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${logo.url}`)
+  const menu = HeaderData?.headerLink || [];
+  const logo = HeaderData?.logo?.Image;
+  const logoActive = HeaderData?.logo?.HeaderActiveImage;
 
   return (
     <header className="fixed top-5 w-full z-100 transition-colors duration-300">
@@ -57,11 +54,7 @@ const Header = ({ HeaderData }) => {
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {/* You can add a dynamic hamburger icon if needed */}
-            </div>
-
-            <div className="logo flex items-center">
-              <Link href="/">
-                {/* {logo && logo.url && (
+               {logo && logo.url && (
                   <Image
                     className="desktopView"
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${logo.url}`}
@@ -78,11 +71,31 @@ const Header = ({ HeaderData }) => {
                     width={logoActive.width || 120}
                     height={logoActive.height || 40}
                   />
-                )} */}
-              </Link>
+                )}
             </div>
 
-            {/* You can keep your mobile icon logic here if needed */}
+            <div className="logo flex items-center">
+              <Link href="/">
+                {logo && logo.url && (
+                  <Image
+                    className="desktopView"
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${logo.url}`}
+                    alt={logo.alternativeText || "Logo"}
+                    width={logo.width || 120}
+                    height={logo.height || 40}
+                  />
+                )}
+                {logoActive && logoActive.url && (
+                  <Image
+                    className="Hamberger"
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${logoActive.url}`}
+                    alt={logoActive.alternativeText || "Logo"}
+                    width={logoActive.width || 120}
+                    height={logoActive.height || 40}
+                  />
+                )}
+              </Link>
+            </div>
           </div>
           <div
             className="HambergerMenu group
