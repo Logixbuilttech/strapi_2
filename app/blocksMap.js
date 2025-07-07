@@ -21,7 +21,6 @@ export const homeBlocksMap = {
 
 export const whoWeAreblocksMap = {
   "layout.hero": HomeHero, 
-  "layout.card-with-logo": CardWithLogo,
   "layout.feature-item-who-we-are": OurValues, 
   "layout.goals-who-we-are": OurGoals,
 };
