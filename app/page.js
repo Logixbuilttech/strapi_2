@@ -36,7 +36,7 @@ export default async function Home() {
   );
 
   const res = await fetch(
-    `${process.env.STRAPI_API_URL}/api/home?${query}`,
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/home?${query}`,
     {
       next: { tags: ["home"] },
       // headers: { Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}` }, // Uncomment if using API token
@@ -51,7 +51,6 @@ export default async function Home() {
 
   const { data } = await res.json();
   const blocks = data.Home || [];
-  console.log("🚀 ~ Home ~ blocks:", blocks)
 
   return (
     <>

@@ -44,7 +44,7 @@ const FeatureCard = ({ data }) => {
               <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-0">
                 {card.Image && card.Image.url && (
                   <Image
-                    src={`${process.env.STRAPI_API_URL}${card.Image.url}`}
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${card.Image.url}`}
                     alt={card.Image.alternativeText || ""}
                     width={card.Image.width || 400}
                     height={card.Image.height || 300}
