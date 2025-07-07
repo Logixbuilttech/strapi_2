@@ -13,7 +13,12 @@ function renderRichText(parts) {
   }
   return parts.map((part, idx) => {
     if (part.br) return <br key={idx} />;
-    if (part.span) return <span className="highlight" key={idx}>{part.text}</span>;
+    if (part.span)
+      return (
+        <span className="highlight" key={idx}>
+          {part.text}
+        </span>
+      );
     return <React.Fragment key={idx}>{part.text}</React.Fragment>;
   });
 }
@@ -33,7 +38,7 @@ const OurValues = ({ data }) => {
             data.Card.map((item, index) => (
               <div
                 key={item.id}
-                className={`$${
+                className={`${
                   index === 2 ? "w-full" : "w-full md:w-[calc(50%-6px)]"
                 }`}
               >
@@ -51,9 +56,7 @@ const OurValues = ({ data }) => {
                       />
                     )}
                   </span>
-                  <p
-                    className="text-[22px] font-medium leading-[120%] tracking-[.03em]"
-                  >
+                  <p className="text-[22px] font-medium leading-[120%] tracking-[.03em]">
                     {item.Description}
                   </p>
                 </div>
