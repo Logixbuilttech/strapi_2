@@ -5,12 +5,12 @@ import Link from "next/link";
 import Container from "@/components/comman/Container";
 import Image from "next/image";
 
-// import Logo from "@/public/images/Logo.svg";
-// import HambergerLogo from "@/public/images/HambergerLogo.svg";
+import Logo from "@/public/images/Logo.svg";
+import HambergerLogo from "@/public/images/HambergerLogo.svg";
 // import HambergerIcon01 from "@/public/images/HambergerIcon-01.svg";
 // import HambergerIcon02 from "@/public/images/HambergerIcon-02.svg";
-// import Mobile from "@/public/images/Mobile.svg";
-// import HambergerMobile from "@/public/images/HambergerMobile.svg";
+import Mobile from "@/public/images/Mobile.svg";
+import HambergerMobile from "@/public/images/HambergerMobile.svg";
 
 const Header = ({ HeaderData }) => {
   // console.log("🚀 ~ Header ~ data:", JSON.stringify(HeaderData, null, 2));
@@ -43,58 +43,59 @@ const Header = ({ HeaderData }) => {
     <header className="fixed top-5 w-full z-100 transition-colors duration-300">
       <Container>
         <div
-          className={`headerBox p-[3px] md:p-2 border-[1px] border-transparent ${isScrolled
+          className={`headerBox p-[3px] md:p-2 border-[1px] border-transparent ${
+            isScrolled
               ? "bg-[#16363d] backdrop-sepia-[blur(10px)] !border-[rgba(238,236,222,.1)]"
               : "bg-[rgba(255,255,255,0.1)] backdrop-sepia-[blur(27px)] "
-            } justify-between transition-colors duration-300`}
+          } justify-between transition-colors duration-300`}
         >
           <div className="flex justify-between w-full items-center">
             <div
               className="NavIcon cursor-pointer"
               onClick={() => setMenuOpen(!menuOpen)}
             >
-              {/* You can add a dynamic hamburger icon if needed */}
-               {logo && logo.url && (
-                  <Image
-                    className="desktopView"
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${logo.url}`}
-                    alt={logo.alternativeText || "Logo"}
-                    width={logo.width || 120}
-                    height={logo.height || 40}
-                  />
-                )}
-                {logoActive && logoActive.url && (
-                  <Image
-                    className="Hamberger"
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${logoActive.url}`}
-                    alt={logoActive.alternativeText || "Logo"}
-                    width={logoActive.width || 120}
-                    height={logoActive.height || 40}
-                  />
-                )}
+              {logo && logo.url && (
+                <Image
+                  className="desktopView"
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${logo.url}`}
+                  alt={logo.alternativeText || "Logo"}
+                  width={logo.width || 120}
+                  height={logo.height || 40}
+                />
+              )}
+              {logoActive && logoActive.url && (
+                <Image
+                  className="Hamberger"
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${logoActive.url}`}
+                  alt={logoActive.alternativeText || "Logo"}
+                  width={logoActive.width || 120}
+                  height={logoActive.height || 40}
+                />
+              )}
             </div>
 
             <div className="logo flex items-center">
-              <Link href="/">
-                {logo && logo.url && (
-                  <Image
-                    className="desktopView"
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${logo.url}`}
-                    alt={logo.alternativeText || "Logo"}
-                    width={logo.width || 120}
-                    height={logo.height || 40}
-                  />
-                )}
-                {logoActive && logoActive.url && (
-                  <Image
-                    className="Hamberger"
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${logoActive.url}`}
-                    alt={logoActive.alternativeText || "Logo"}
-                    width={logoActive.width || 120}
-                    height={logoActive.height || 40}
-                  />
-                )}
+              <Link href="">
+                <Image
+                  className="desktopView"
+                  src={Logo}
+                  alt="RenewEdge Solutions"
+                />
+                <Image
+                  className="Hamberger"
+                  src={HambergerLogo}
+                  alt="RenewEdge Solutions"
+                />
               </Link>
+            </div>
+
+            <div className="mobileIcon">
+              <Image className="desktopView" src={Mobile} alt="Mobile Icon" />
+              <Image
+                className="Hamberger"
+                src={HambergerMobile}
+                alt="Mobile Icon"
+              />
             </div>
           </div>
           <div
