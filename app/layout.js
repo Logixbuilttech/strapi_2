@@ -2,6 +2,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/comman/Header/Header";
 import Footer from "@/components/comman/Footer/Footer";
+import qs from "qs";
+import { fetchStrapi } from "@/lib/strapiApi";
+import { globalPopulate } from "@/lib/populateMap";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +14,15 @@ export const metadata = {
     "Empowering Smarter Growth Through Technology, Design, and Digital Innovation",
 };
 
-export default function RootLayout({ children }) {
+
+export default async function RootLayout({ children }) {
+   const global = await fetchStrapi('global', {
+    populate: globalPopulate.populate,
+    tag: 'global',
+    revalidate: 3600,
+  });
+   
+
   return (
     <html lang="en" className="scroll-smooth">
       <head>
@@ -22,9 +33,9 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <Header />
+        <Header HeaderData={global.TopNav} />
         {children}
-        <Footer />
+        <Footer FooterData={global.Footer}/>
       </body>
     </html>
   );

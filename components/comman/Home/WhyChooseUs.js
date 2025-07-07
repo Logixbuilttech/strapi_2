@@ -52,7 +52,7 @@ const WhyChooseUs = ({ data }) => {
               <span className="min-w-[24px] min-h-[24px] rounded-[8px] flex items-center justify-center m-auto bg-[rgba(255,255,255,.1)] p-2.5">
                 {item.icon && item.icon.url && (
                   <Image
-                    src={`${process.env.STRAPI_API_URL}${item.icon.url}`}
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.icon.url}`}
                     alt={item.title}
                     width={item.icon.width || 40}
                     height={item.icon.height || 40}

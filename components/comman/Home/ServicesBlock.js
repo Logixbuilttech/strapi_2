@@ -17,7 +17,6 @@ const ServicesBlock = ({ data }) => {
   const headingParts = parseStrapiRichText(data.rightText);
   // Parse the whole subText array at once
   const descriptionParts = parseStrapiRichText(data.subText);
-
   return (
     <BackgroundBlock variant="lightBG">
       <Container>
