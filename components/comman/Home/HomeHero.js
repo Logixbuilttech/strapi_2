@@ -18,7 +18,7 @@ const HomeHero = ({ data }) => {
           smallText={smallText}
           showButton={!!data.Button}
           buttonText={buttonText}
-          onButtonClick={() => window.location.href = buttonHref}
+          onButtonClick={() => (window.location.href = buttonHref)}
           className="pb-[84px] md:pb-[92px] lg:pb-[116px]"
         />
       </div>

@@ -43,10 +43,7 @@ const HeroText = ({
             return <br key={index} />;
           } else if (part.span) {
             return (
-              <span
-                className="highlight"
-                key={index}
-              >
+              <span className="highlight" key={index}>
                 {part.text}
               </span>
             );

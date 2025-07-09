@@ -43,15 +43,32 @@ const Button = ({
   const iconBorder = isOutline ? `border-2 ${border.split(" ")[1]}` : "";
   const alignment = align === "left" ? "m-0" : "mx-auto";
 
+  // Hover class only for default button
+  const hoverTextColor =
+    variant === "filled" && color === "light"
+      ? "group-hover:text-[#0F947E]"
+      : variant === "filled" && color === "dark"
+      ? "group-hover:text-[#E9F5AC]"
+      : "";
+
+  const hoverBgColor =
+    isOutline && color === "light"
+      ? "group-hover:bg-[#EEECDE] group-hover:text-[#0F947E]"
+      : isOutline && color === "dark"
+      ? "group-hover:bg-[#16363D] group-hover:text-[#E9F5AC]"
+      : "";
+
   return (
     <button
-      className={`flex gap-1 items-center cursor-pointer ${textColor} ${alignment}`}
+      className={`transition group flex gap-1 items-center cursor-pointer ${textColor} ${alignment}`}
     >
-      <span className={`${baseText} ${bgColor} ${border} ${sizeClasses}`}>
+      <span
+        className={`transition ${baseText} ${bgColor} ${border} ${sizeClasses} ${hoverTextColor} ${hoverBgColor}`}
+      >
         {label}
       </span>
       <i
-        className={`flex items-center justify-center rounded-full ${iconSize} ${bgColor} ${iconBorder}`}
+        className={`transition flex items-center justify-center rounded-full ${iconSize} ${bgColor} ${iconBorder} ${hoverTextColor} ${hoverBgColor}`}
       >
         <svg
           width={size === "lg" ? "18" : "17"}

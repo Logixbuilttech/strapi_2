@@ -9,7 +9,13 @@ function renderRichText(parts) {
   // If array of strings, render each as a <p> for paragraph spacing
   if (parts.length > 0 && typeof parts[0] === "string") {
     return parts.map((str, idx) => (
-      <p key={idx} style={{ margin: 0, marginBottom: idx !== parts.length - 1 ? "1em" : 0 }}>
+      <p
+        key={idx}
+        style={{
+          margin: 0,
+          marginBottom: idx !== parts.length - 1 ? "1em" : 0,
+        }}
+      >
         {str}
       </p>
     ));
@@ -17,7 +23,12 @@ function renderRichText(parts) {
   // Otherwise, assume array of objects (old usage)
   return parts.map((part, idx) => {
     if (part.br) return <br key={idx} />;
-    if (part.span) return <span className="highlight" key={idx}>{part.text}</span>;
+    if (part.span)
+      return (
+        <span className="highlight" key={idx}>
+          {part.text}
+        </span>
+      );
     return <React.Fragment key={idx}>{part.text}</React.Fragment>;
   });
 }
@@ -27,10 +38,10 @@ const SectionBlock = ({
   badgeNumber,
   heading,
   DescriptionText = [],
-  className="",
-} ) => {
-  console.log("🚀 ~ DescriptionText:", DescriptionText)
-  console.log("🚀 ~ title:", title)
+  className = "",
+}) => {
+  console.log("🚀 ~ DescriptionText:", DescriptionText);
+  console.log("🚀 ~ title:", title);
   return (
     <div className={`pb-12 lg:pb-[64px] ${className}`}>
       <div className="flex pb-[30px] md:pb-10 lg:pb-[48px]">
@@ -54,9 +65,7 @@ const SectionBlock = ({
         </div>
 
         <div className="w-1/2">
-          <h3
-            className="text-[30px] md:text-[44px] lg:text-[66px] leading-[113%] font-normal uppercase text-[#16363D]"
-          >
+          <h3 className="text-[30px] md:text-[44px] lg:text-[66px] leading-[113%] font-normal uppercase text-[#16363D]">
             {renderRichText(heading)}
           </h3>
         </div>
