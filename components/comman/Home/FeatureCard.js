@@ -21,7 +21,7 @@ function renderRichText(parts) {
 const FeatureCard = ({ data }) => {
   if (!data || !Array.isArray(data.card)) return null;
   return (
-    <div className="bg-[#EEECDE] -mt-5 z-10 relative pb-[96px]">
+    <div className="bg-[#EEECDE] z-10 relative pb-[96px]">
       <Container>
         <div className="grid gap-3">
           {data.card.map((card) => (

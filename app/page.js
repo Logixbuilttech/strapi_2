@@ -1,6 +1,12 @@
 import { fetchStrapi } from "@/lib/strapiApi.js";
 import { homeBlocksMap } from "./blocksMap.js";
 import { homePopulate } from "@/lib/populateMap.js";
+import HomeHero from "@/components/comman/Home/HomeHero.js";
+import ServicesBlock from "@/components/comman/Home/ServicesBlock.js";
+import FeatureCard from "@/components/comman/Home/FeatureCard.js";
+import WhyChooseUs from "@/components/comman/Home/WhyChooseUs.js";
+import OurProcess from "@/components/comman/Home/OurProcess.js";
+import WhatWeDo from "@/components/comman/Home/WhatWeDo.js";
 
 export const revalidate = 3600;
 
@@ -16,9 +22,36 @@ export default async function Home() {
   return (
     <>
       {blocks.map((b) => {
-        const Comp = homeBlocksMap[b.__component];
-        const uniqueKey = `${b.__component}-${b.id}`;
-        return Comp ? <Comp key={uniqueKey} data={b} /> : null;
+        switch (b.__component) {
+          case "layout.hero":
+            return <HomeHero key={b.id} data={b} />;
+          case "layout.content-block":
+            return (
+              <>
+                <div key={b.id} className={`bg-[#EEECDE] rounded-[16px_16px_0_0] pt-[96px] ${b.Background && 'darkBG'}`}>
+                  <ServicesBlock key={b.id} data={b} />
+                </div>
+              </>
+            );
+          case "layout.feature-card":
+            return <FeatureCard key={b.id} data={b} />;
+          case "layout.feature-item":
+            return (
+              <div key={b.id} className="feature-item-wrapper">
+                <WhyChooseUs data={b} />
+              </div>
+            );
+          case "layout.step-item":
+            return <OurProcess key={b.id} data={b} />;
+          case "layout.target-audience-section":
+            return (
+              <div key={b.id} className="pb-[96px]">
+                <WhatWeDo key={b.id} data={b} />
+              </div>
+            );
+          default:
+            return null;
+        }
       })}
     </>
   );

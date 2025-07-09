@@ -252,6 +252,15 @@ textarea {
   color: #eeecde;
 }
 
+.darkBG{
+  background:#16363D !important;
+}
+.darkBG .relative:before{background:rgba(238, 236, 222,.15) !important;}
+.darkBG p,
+.darkBG h3{
+  color:#EEECDE;
+}
+
 @media (max-width: 767px) {
   .headerBox {
     height: 52px;

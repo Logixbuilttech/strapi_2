@@ -3,10 +3,18 @@ import React from "react";
 // Helper to render parsed rich text arrays (with highlight support)
 function renderRichText(parts) {
   if (!Array.isArray(parts)) {
-    // fallback for old usage or empty input
     if (typeof parts === "string") return parts;
     return null;
   }
+  // If array of strings, render each as a <p> for paragraph spacing
+  if (parts.length > 0 && typeof parts[0] === "string") {
+    return parts.map((str, idx) => (
+      <p key={idx} style={{ margin: 0, marginBottom: idx !== parts.length - 1 ? "1em" : 0 }}>
+        {str}
+      </p>
+    ));
+  }
+  // Otherwise, assume array of objects (old usage)
   return parts.map((part, idx) => {
     if (part.br) return <br key={idx} />;
     if (part.span) return <span className="highlight" key={idx}>{part.text}</span>;
@@ -21,6 +29,8 @@ const SectionBlock = ({
   DescriptionText = [],
   className="",
 } ) => {
+  console.log("🚀 ~ DescriptionText:", DescriptionText)
+  console.log("🚀 ~ title:", title)
   return (
     <div className={`pb-12 lg:pb-[64px] ${className}`}>
       <div className="flex pb-[30px] md:pb-10 lg:pb-[48px]">

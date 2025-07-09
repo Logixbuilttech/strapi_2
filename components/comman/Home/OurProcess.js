@@ -22,7 +22,7 @@ const OurProcess = ({ data }) => {
   if (!data) return null;
 
   return (
-    <BackgroundBlock variant="lightBG" className="pb-0">
+    <section className="pb-[96px] bg-[#EEECDE]">
       <Container>
         <div
           className="before:content-[''] before:bg-[rgba(22,54,61,.15)] before:w-[calc(100%-110px)] before:h-[1px]
@@ -74,7 +74,7 @@ const OurProcess = ({ data }) => {
           </div>
         </div>
       </Container>
-    </BackgroundBlock>
+    </section>
   );
 }; 
 

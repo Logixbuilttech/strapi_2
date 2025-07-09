@@ -7,8 +7,7 @@ const WhatWeDo = ({ data }) => {
   if (!data) return null;
 
   return (
-    <BackgroundBlock>
-
+    
       <div className="flex gap-3 w-full max-w-[1360px] px-6 m-auto overflow-auto">
         {Array.isArray(data.Item) &&
           data.Item.map((item) => (
@@ -36,7 +35,6 @@ const WhatWeDo = ({ data }) => {
             </div>
           ))}
       </div>
-    </BackgroundBlock>
   );
 };
 
