@@ -39,11 +39,11 @@ const OurValues = ({ data }) => {
               <div
                 key={item.id}
                 className={`${
-                  index === 2 ? "w-full" : "w-full md:w-[calc(50%-6px)]"
+                  index === 2 ? "w-full" : "w-full lg:w-[calc(50%-6px)]"
                 }`}
               >
-                <div className="bg-[#16363D] rounded-[16px] p-6 flex flex-col justify-between gap-2 h-[388px] text-center">
-                  <h3 className="text-[28px] text-[#EEECDE] leading-[113%]">
+                <div className="bg-[#16363D] rounded-[16px] p-6 flex flex-col justify-between gap-[46px] md:gap-2 h-auto md:h-[342px] lg:h-[388px] text-center ">
+                  <h3 className="text-[24px] md:text-[28px] text-[#EEECDE] leading-[113%]">
                     {renderRichText(parseStrapiRichText(item.Title))}
                   </h3>
                   <span className="w-[64px] h-[64px] bg-[rgba(255,255,255,.1)] rounded-[8px] flex items-center justify-center m-auto">
@@ -56,7 +56,7 @@ const OurValues = ({ data }) => {
                       />
                     )}
                   </span>
-                  <p className="text-[22px] font-medium leading-[120%] tracking-[.03em]">
+                  <p className="text-[14px] md:text-[18px] lg:text-[22px] font-medium leading-[120%] tracking-[.03em]">
                     {item.Description}
                   </p>
                 </div>

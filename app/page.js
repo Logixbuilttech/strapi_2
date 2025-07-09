@@ -28,7 +28,12 @@ export default async function Home() {
           case "layout.content-block":
             return (
               <>
-                <div key={b.id} className={`bg-[#EEECDE] rounded-[16px_16px_0_0] pt-[96px] ${b.Background && 'darkBG'}`}>
+                <div
+                  key={b.id}
+                  className={`bg-[#EEECDE] rounded-[16px_16px_0_0] pt-[64px] md:pt-[72px] lg:pt-[82px] xl:pt-[96px] relative z-10 -mt-5 ${
+                    b.Background && "darkBG"
+                  }`}
+                >
                   <ServicesBlock key={b.id} data={b} />
                 </div>
               </>
@@ -37,7 +42,7 @@ export default async function Home() {
             return <FeatureCard key={b.id} data={b} />;
           case "layout.feature-item":
             return (
-              <div key={b.id} className="feature-item-wrapper">
+              <div key={b.id}>
                 <WhyChooseUs data={b} />
               </div>
             );
@@ -45,7 +50,10 @@ export default async function Home() {
             return <OurProcess key={b.id} data={b} />;
           case "layout.target-audience-section":
             return (
-              <div key={b.id} className="pb-[96px]">
+              <div
+                key={b.id}
+                className="pb-[84px] md:pb-[92px] lg:pb-[102px] xl:pb-[116px]"
+              >
                 <WhatWeDo key={b.id} data={b} />
               </div>
             );

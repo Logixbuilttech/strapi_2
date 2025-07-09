@@ -12,7 +12,7 @@ const PrivacyPolicyHero = () => {
   return (
     <>
       <section className="headBG">
-        <div className="headBG-Bottam"></div>
+        {/* <div className="headBG-Bottam"></div> */}
         <div className="relative z-10">
           <HeroText heroParts={heroParts} smallText={smallText} />
         </div>

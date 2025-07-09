@@ -33,14 +33,16 @@ const Button = ({
     : "bg-[#EEECDE]";
 
   const border = isOutline
-    ? `border-2 ${isDark ? "border-[#16363D]" : "border-[#EEECDE]"}`
+    ? `border-1 lg:border-2 ${isDark ? "border-[#16363D]" : "border-[#EEECDE]"}`
     : "border-0";
 
   const iconSize =
     size === "lg"
       ? "w-[44px] h-[44px] lg:w-[60px] lg:h-[60px]"
       : "w-[44px] h-[44px]";
-  const iconBorder = isOutline ? `border-2 ${border.split(" ")[1]}` : "";
+  const iconBorder = isOutline
+    ? `border-1 lg:border-2 ${border.split(" ")[1]}`
+    : "";
   const alignment = align === "left" ? "m-0" : "mx-auto";
 
   // Hover class only for default button
@@ -53,9 +55,9 @@ const Button = ({
 
   const hoverBgColor =
     isOutline && color === "light"
-      ? "group-hover:bg-[#EEECDE] group-hover:text-[#0F947E]"
+      ? "group-hover:bg-[#EEECDE] group-hover:border-[#EEECDE] group-hover:text-[#0F947E]"
       : isOutline && color === "dark"
-      ? "group-hover:bg-[#16363D] group-hover:text-[#E9F5AC]"
+      ? "group-hover:bg-[#16363D] group-hover:border-[#16363D] group-hover:text-[#E9F5AC]"
       : "";
 
   return (

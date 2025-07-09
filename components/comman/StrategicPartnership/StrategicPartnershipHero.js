@@ -17,7 +17,7 @@ const smallText =
 const StrategicPartnershipHero = () => {
   return (
     <section className="headBG">
-      <div className="headBG-Bottam"></div>
+      {/* <div className="headBG-Bottam"></div> */}
       <div className="relative z-10 pb-10 md:pb-12 lg:pb-[68px]">
         <HeroText
           heading5="Partner with RenewEdge-Solutions"

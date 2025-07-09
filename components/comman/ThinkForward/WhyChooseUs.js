@@ -41,7 +41,7 @@ const WhyChooseUs = () => {
           <p className="text-[#EEECDE] text-[18px] leading-[100%] tracking-[-0.02em] uppercase font-semibold">
             Why Choose Us
           </p>
-          <h3 className="text-[66px] text-[#EEECDE] leading-[113%] uppercase">
+          <h3 className="text-[66px] text-[#EEECDE] leading-[113%] uppercase flex items-center">
             The Edge We{" "}
             <span className="bg-[#E9F5AC] text-[#16363D] px-1 rounded-[4px] leading-[100%] inline-block align-top">
               Bring
@@ -57,8 +57,12 @@ const WhyChooseUs = () => {
               <h4 className="uppercase text-white text-[28px] leading-[113%] ">
                 {item.title}
               </h4>
-              <span className="min-w-[24px] min-h-[24px] rounded-[8px] flex items-center justify-center m-auto bg-[rgba(255,255,255,.1)] p-2.5">
-                <Image src={item.IMG} alt={item.title} />
+              <span className="min-w-[64px] min-h-[64px] rounded-[8px] flex items-center justify-center m-auto bg-[rgba(255,255,255,.1)] p-2.5">
+                <Image
+                  src={item.IMG}
+                  alt={item.title}
+                  className="max-w-[44px] max-h-[44px]"
+                />
               </span>
               <p className="text-[#EEECDE] text-[22px] font-medium leading-[120%] tracking-[-0.03em]">
                 {item.text}

@@ -140,14 +140,14 @@ const Footer = ({ FooterData }) => {
                 {brandName}
               </h2>
             </div>
-            <div className="w-full lg:w-1/2 flex justify-between items-center">
+            <div className="w-full lg:w-1/2 flex justify-between items-center flex-row-reverse lg:flex-row">
               <p className="text-[14px] text-[rgba(22,54,61,.4)] leading-[120%] font-medium tracking-[-0.02em]">
                 {FooterData?.RenewEdge || "RenewEdge Solutions"}{" "}
                 {new Date().getFullYear()}
               </p>
               {privacy && (
                 <Link
-                  className="text-[14px] text-[rgba(22,54,61,.4)] leading-[120%] font-medium tracking-[-0.02em]"
+                  className="text-[14px] text-[rgba(22,54,61,.4)] leading-[120%] font-medium tracking-[-0.02em] underline"
                   href={privacy.href}
                 >
                   {privacy.Name}
