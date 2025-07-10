@@ -12,7 +12,7 @@ import OurValues from "@/components/comman/WhoWeAre/OurValues";
 
 export const homeBlocksMap = {
   "layout.hero": HomeHero, 
-  "layout.content-block": ServicesBlock,
+  "layout.content-block": ServicesBlock ,
   "layout.feature-card": FeatureCard, 
   "layout.feature-item": WhyChooseUs, 
   "layout.step-item": OurProcess,
