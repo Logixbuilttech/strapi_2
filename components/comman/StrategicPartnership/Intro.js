@@ -6,7 +6,7 @@ const Intro = () => {
   return (
     <BackgroundBlock variant="lightBG">
       <Container>
-        <SectionBlock
+        {/* <SectionBlock
           className="!pb-0"
           title="Intro"
           heading="Partner for Progress"
@@ -14,7 +14,7 @@ const Intro = () => {
             "If you’re an entrepreneur, innovator, or business leader seeking a growth partner who shares your vision — let’s connect.",
             "We’re open to investing in, partnering with, and co-developing businesses that are shaping tomorrow.",
           ]}
-        />
+        /> */}
       </Container>
     </BackgroundBlock>
   );

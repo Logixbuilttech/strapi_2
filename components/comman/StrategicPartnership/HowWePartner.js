@@ -4,7 +4,7 @@ import Container from "@/components/comman/Container";
 const HowWePartner = () => {
   return (
     <BackgroundBlock>
-      <Container>
+      {/* <Container>
         <div className="text-center grid gap-4">
           <span className="text-[18px] font-semibold text-[#EEECDE] tracking-[.02em] leading-[100%] uppercase !font-Archivo">
             How We Partner
@@ -17,7 +17,7 @@ const HowWePartner = () => {
             communication, <br /> and mutual growth.
           </h2>
         </div>
-      </Container>
+      </Container> */}
     </BackgroundBlock>
   );
 };
