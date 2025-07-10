@@ -44,7 +44,7 @@ export default async function PrivacyPolicy() {
             return <HomeHero key={b.id} data={b} />;
           case "layout.privacy-policy":
             return (
-              <BackgroundBlock variant="lightBG" key={b.id}>
+              <BackgroundBlock variant="lightBG" key={b.id} className="!pb-5">
                 <Container>
                   {b.PrivacyPolicy &&
                     b.PrivacyPolicy.map((policy, idx) => (

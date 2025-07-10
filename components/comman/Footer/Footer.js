@@ -46,8 +46,8 @@ const Footer = ({ FooterData }) => {
         }`}
       >
         <Container>
-          <div className="grid lg:flex gap-12 sm:gap-10 lg:gap-[60px] ">
-            <div className="flex flex-col gap-4 w-full min-w-[1140px]:w-[460px] min-w-[1140px]:w-1/2">
+          <div className="grid lg:flex gap-12 sm:gap-10 lg:gap-[50px] ">
+            <div className="flex flex-col gap-4 w-full lg:min-w-[460px] lg:w-[601px]">
               <p className="text-[14px] sm:text-[16px] text-[#16363D] tracking-[-0.02em] leading-[120%]">
                 {FooterData?.customization_prompt}
               </p>
@@ -76,7 +76,7 @@ const Footer = ({ FooterData }) => {
                 )}
               </div>
             </div>
-            <div className="gap-[30px] sm:gap-[70px] lg:gap-0 lg:w-1/2 flex sm:justify-between flex-wrap">
+            <div className="gap-[30px] sm:gap-[70px] lg:gap-0 lg:w-1/2 flex sm:justify-between flex-wrap lg:ml-auto">
               <div className="lg:w-1/2 lg:hidden order-[3] sm:order-none w-full sm:w-fit">
                 <h2 className="text-[#16363D] text-[38px] sm:text-[44px] font-Anton sm:leading-[113%] leading-[100%] uppercase">
                   {brandName}
@@ -135,7 +135,7 @@ const Footer = ({ FooterData }) => {
             </div>
           </div>
           <div className="flex gap-[60px] items-end mt-[30px] sm:mt-10 lg:-mt-4 w-full">
-            <div className="w-1/2 hidden lg:block">
+            <div className="w-full lg:min-w-[460px] lg:w-[601px] hidden lg:block">
               <h2 className="text-[#16363D] text-[66px] font-Anton leading-[100%] uppercase">
                 {brandName}
               </h2>

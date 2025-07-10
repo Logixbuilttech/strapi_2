@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Image from "next/image";
 import BackgroundBlock from "@/components/comman/BackgroundBlock";
@@ -48,11 +48,11 @@ const WhyChooseUs = ({ data }) => {
 
       <div className="max-w-[1360px] w-full px-6 m-auto">
         <Swiper
-          spaceBetween={24}
+          spaceBetween={12}
           slidesPerView={1}
           breakpoints={{
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
+            768: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
           }}
         >
           {Array.isArray(data.Item) &&
@@ -60,7 +60,7 @@ const WhyChooseUs = ({ data }) => {
               <SwiperSlide key={item.id}>
                 <div
                   className="bg-[rgba(255,255,255,.07)] rounded-[16px] p-6 flex flex-col gap-2 justify-between text-center items-center
-                    h-[342px] lg:h-[382px] w-[300px] md:w-[334px] lg:w-[319px] min-w-[300px] md:min-w-[334px] lg:min-w-[319px]"
+                    h-[342px] lg:h-[382px] w-full"
                 >
                   <h4 className="uppercase text-white text-[24px] md:text-[28px] leading-[113%] ">
                     {item.title}
