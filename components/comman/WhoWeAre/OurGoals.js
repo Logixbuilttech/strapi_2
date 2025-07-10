@@ -26,12 +26,12 @@ const OurGoals = ({ data }) => {
 
   return (
     <BackgroundBlock>
-      <div className="grid gap-4 text-center px-5 pb-[48px] border-b-[1px] border-[rgba(238,236,222,.15)]">
-        <p className="uppercase text-[10px] md:text-[14px] lg:text-[18px] font-semibold leading-[100%] tracking-[.02em]">
+      <div className="grid gap-4 text-center px-5 pb-[48px] border-b-[1px] border-[rgba(238,236,222,.15)] ">
+        <p className="uppercase text-[10px] md:text-[14px] lg:text-[18px] font-semibold leading-[100%] tracking-[.02em] text-[#EEECDE]">
           {data.Title?.ShortText ||
             "Our goals reflect our ambition to drive real change:"}
         </p>
-        <h2 className="text-[30px] md:text-[44px] lg:text-[56px] xl:text-[66px] text-white leading-[113%] uppercase">
+        <h2 className="text-[30px] md:text-[44px] lg:text-[56px] xl:text-[66px] text-[#EEECDE] leading-[113%] uppercase">
           {renderRichText(parseStrapiRichText(data.Title?.Title))}
         </h2>
       </div>

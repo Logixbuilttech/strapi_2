@@ -56,7 +56,7 @@ const OurValues = ({ data }) => {
                       />
                     )}
                   </span>
-                  <p className="text-[14px] md:text-[18px] lg:text-[22px] font-medium leading-[120%] tracking-[.03em] max-w-[500px] mx-auto">
+                  <p className="text-[14px] md:text-[18px] lg:text-[22px] font-medium leading-[120%] tracking-[.03em] max-w-[500px] mx-auto text-[#EEECDE]">
                     {item.Description}
                   </p>
                 </div>
