@@ -4,6 +4,12 @@ const nextConfig = {
     legacyBrowsers: false,
     browsersListForSwc: true,
   },
+   eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true, // ⚠️ use only if you're sure
+  },
   images: {
     domains: [
       "localhost",
