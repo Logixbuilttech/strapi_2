@@ -43,7 +43,7 @@ const OurGoals = ({ data }) => {
                 <small className="text-[rgba(238,236,222,.3)] text-[10px] md:text-[18px] tracking-[.02em] font-semibold leading-[100%] uppercase">
                   {goal.ShortText}
                 </small>
-                <h4 className="text-[30px] md:text-[44px] lg:text-[48px] uppercase leading-[113%] font-Anton">
+                <h4 className="text-[30px] md:text-[44px] lg:text-[48px] uppercase leading-[113%] font-Anton text-[#EEECDE]">
                   {renderRichText(parseStrapiRichText(goal.Title))}
                 </h4>
               </div>
