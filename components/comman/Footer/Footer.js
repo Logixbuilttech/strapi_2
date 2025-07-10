@@ -34,6 +34,7 @@ const Footer = ({ FooterData }) => {
   const brandName = renderRichText(parseStrapiRichText(FooterData?.Name));
   const location = renderRichText(parseStrapiRichText(FooterData?.location));
   const button = FooterData?.Start_journey;
+  const Mobilebutton = FooterData?.Mobile_button;
   const social = FooterData?.FooterSocial?.Link || [];
   const nav = FooterData?.FooterNavigation?.Link || [];
   const privacy = FooterData?.PrivacyPolicy;
@@ -52,14 +53,14 @@ const Footer = ({ FooterData }) => {
                 {FooterData?.customization_prompt}
               </p>
               <div className="sm:hidden block">
-                {button && (
+                {Mobilebutton && (
                   <Button
                     align="left"
-                    label={button.text}
+                    label={Mobilebutton.text}
                     variant="outline"
                     size="sm"
                     color="dark"
-                    href={button.href}
+                    href={Mobilebutton.href}
                   />
                 )}
               </div>
