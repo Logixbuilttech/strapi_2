@@ -39,7 +39,7 @@ const FeatureCard = ({ data }) => {
                 <h3 className="text-[#EEECDE] text-[24px] md:text-[28px] lg:text-[44px] xl:text-[48px] uppercase leading-[113%] text-center">
                   {renderRichText(parseStrapiRichText(card.title))}
                 </h3>
-                <p className="text-[14px] md:text-[18px] lg:text-[22px] leading-[120%] font-medium tracking-[-0.02em] max-w-[420px] lg:max-w-fit mx-auto xl:m-0">
+                <p className="text-[14px] md:text-[18px] lg:text-[22px] leading-[120%] font-medium tracking-[-0.02em] max-w-[420px] lg:max-w-fit mx-auto xl:m-0 text-[#EEECDE]">
                   {card.text}
                 </p>
                 {card.button && card.button.text && (
