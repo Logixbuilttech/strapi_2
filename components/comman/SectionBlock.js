@@ -73,8 +73,8 @@ const SectionBlock = ({
       </div>
 
       <div
-        className="relative pt-[30px] md:pt-10 lg:pt-[48px] before:content-[''] before:bg-[rgba(22,54,61,.15)] before:absolute before:top-0 before:left-[-50%] \
-        before:w-[200%] before:h-[1px]"
+        className="relative pt-[30px] md:pt-10 lg:pt-[48px] before:content-[''] before:bg-[rgba(22,54,61,.15)] before:absolute before:top-0 before:left-[-50%] 
+        before:w-[200%] before:h-[1px] overflow-hidden"
       >
         <div
           className={`grid gap-4  ml-auto w-[calc(100%-90px)] md:w-[calc(100%-176px)] lg:w-1/2 ${
