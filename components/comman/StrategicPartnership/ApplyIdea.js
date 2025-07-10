@@ -4,7 +4,7 @@ import Container from "@/components/comman/Container";
 const ApplyIdea = () => {
   return (
     <BackgroundBlock>
-      <div className="text-center pb-12">
+      {/* <div className="text-center pb-12">
         <span className="text-[18px] tracking-[.02em] text-[#EEECDE] font-semibold font-Archivo mb-4 uppercase">
           Apply or Pitch Your Idea
         </span>
@@ -39,7 +39,7 @@ const ApplyIdea = () => {
           We’re not looking for perfection — we’re looking for passion, purpose,
           and potential
         </p>
-      </div>
+      </div> */}
     </BackgroundBlock>
   );
 };
