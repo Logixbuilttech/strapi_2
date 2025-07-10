@@ -5,7 +5,7 @@ const nextConfig = {
     browsersListForSwc: true,
   },
   images: {
-    domains: ["localhost", "bc90f16ec530.ngrok-free.app"], // Add any other domains here
+    domains: ["localhost", "35c312c25a2c.ngrok-free.app"], // Add any other domains here
   },
 };
 

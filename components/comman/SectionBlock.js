@@ -46,7 +46,7 @@ const SectionBlock = ({
   return (
     <div className={`pb-12 lg:pb-[64px] ${className}`}>
       <div className="flex pb-[30px] md:pb-10 lg:pb-[48px]">
-        <div className="w-[90px] md:w-[176px] lg:w-[30%] xl:w-1/2">
+        <div className="w-[90px] md:w-[176px] lg:w-1/2">
           {title && (
             <p className="whitespace-nowrap font-semibold text-[10px] md:text-[14px] lg:text-[18px] leading-[100%] w-1/2 text-[#16363D] uppercase tracking-[-0.02em]">
               {title}
@@ -65,7 +65,7 @@ const SectionBlock = ({
           )}
         </div>
 
-        <div className="w-[calc(100%-90px)] md:w-[calc(100%-176px)] lg:w-[70%] xl:w-1/2">
+        <div className="w-[calc(100%-90px)] md:w-[calc(100%-176px)] lg:w-1/2">
           <h3 className="text-[30px] md:text-[44px] lg:text-[56px] xl:text-[66px] leading-[113%] font-normal uppercase text-[#16363D] flex gap-2 items-center">
             {renderRichText(heading)}
           </h3>
@@ -77,7 +77,7 @@ const SectionBlock = ({
         before:w-[200%] before:h-[1px]"
       >
         <div
-          className={`grid gap-4  ml-auto w-[calc(100%-90px)] md:w-[calc(100%-176px)] lg:w-[70%] xl:w-1/2 ${
+          className={`grid gap-4  ml-auto w-[calc(100%-90px)] md:w-[calc(100%-176px)] lg:w-1/2 ${
             widthFull === true && " w-full "
           }`}
         >

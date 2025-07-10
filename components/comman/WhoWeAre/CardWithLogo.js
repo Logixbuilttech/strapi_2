@@ -6,11 +6,11 @@ const CardWithLogo = ({ data }) => {
   if (!data) return null;
 
   return (
-    <section className="headBG -mt-11 lg:-mt-12">
+    <section className="-mt-11 lg:-mt-12">
       <div className="pb-[116px]">
         <Container>
           <div
-            className="bg-[rgba(255,255,255,.07)] border-[2px] border-[rgba(255,255,255,.1)] rounded-[16px] grid lg:flex 
+            className="bg-[rgba(255,255,255,.07)] border-[1px] lg:border-[2px] border-[rgba(255,255,255,.1)] rounded-[16px] grid lg:flex 
             overflow-hidden z-10 relative h-auto lg:h-[593px]"
           >
             <div className="w-full lg:w-1/2 gap-[38px] grid lg:flex lg:justify-between text-center flex-col py-10 px-5 lg:px-0">
@@ -25,7 +25,7 @@ const CardWithLogo = ({ data }) => {
               )}
               <p
                 className="text-[14px] md:text-[18px] lg:text-[22px] leading-[120%] tracking[-0.03em] text-[#EEECDE]
-              max-w-[300px] md:max-w-[410px] lg:max-w-[100%] mx-auto"
+              max-w-[300px] md:max-w-[410px] lg:max-w-[500px] mx-auto"
               >
                 {data.Text}
               </p>
@@ -39,8 +39,8 @@ const CardWithLogo = ({ data }) => {
               )}
             </div>
             <div
-              className="w-full lg:w-1/2 bg-[rgba(255,255,255,.08)] backdrop-sepia-[blur(37px)] flex justify-center items-center 
-            py-5 lg:py-6"
+              className="w-[calc(100%-8px)] mx-auto  lg:w-1/2 bg-[rgba(255,255,255,.08)] backdrop-sepia-[blur(37px)] flex justify-center items-center 
+            py-5 lg:py-6 rounded-[0_0_16px_16px] lg:rounded-none mb-1 lg:mb-0"
             >
               {data.Image && data.Image.url && (
                 <Image
