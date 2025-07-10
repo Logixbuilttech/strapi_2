@@ -1,8 +1,11 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import BackgroundBlock from "@/components/comman/BackgroundBlock";
 import Container from "@/components/comman/Container";
 import { parseStrapiRichText } from "@/lib/parseStrapiRichText";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 // Helper to render parsed rich text arrays (with highlight support)
 function renderRichText(parts) {
@@ -43,32 +46,42 @@ const WhyChooseUs = ({ data }) => {
         </div>
       </Container>
 
-      <div className="flex gap-3 overflow-auto px-6 m-auto max-w-[1360px] w-full">
-        {Array.isArray(data.Item) &&
-          data.Item.map((item) => (
-            <div
-              key={item.id}
-              className="bg-[rgba(255,255,255,.07)] rounded-[16px] p-6 flex flex-col gap-2 justify-between text-center items-center
-                h-[342px] lg:h-[382px] w-[300px] md:w-[334px] lg:w-[319px] min-w-[300px] md:min-w-[334px] lg:min-w-[319px]"
-            >
-              <h4 className="uppercase text-white text-[24px] md:text-[28px] leading-[113%] ">
-                {item.title}
-              </h4>
-              <span className="max-w-[64px] max-h-[64px] min-w-[64px] min-h-[64px] rounded-[8px] flex items-center justify-center m-auto bg-[rgba(255,255,255,.1)] p-2.5">
-                {item.icon && item.icon.url && (
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.icon.url}`}
-                    alt={item.title}
-                    width={item.icon.width || 40}
-                    height={item.icon.height || 40}
-                  />
-                )}
-              </span>
-              <p className="text-[#EEECDE] text-[14px] md:text-[18px] lg:text-[22px] font-medium leading-[120%] tracking-[-0.03em]">
-                {item.text}
-              </p>
-            </div>
-          ))}
+      <div className="max-w-[1360px] w-full px-6 m-auto">
+        <Swiper
+          spaceBetween={24}
+          slidesPerView={1}
+          breakpoints={{
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {Array.isArray(data.Item) &&
+            data.Item.map((item) => (
+              <SwiperSlide key={item.id}>
+                <div
+                  className="bg-[rgba(255,255,255,.07)] rounded-[16px] p-6 flex flex-col gap-2 justify-between text-center items-center
+                    h-[342px] lg:h-[382px] w-[300px] md:w-[334px] lg:w-[319px] min-w-[300px] md:min-w-[334px] lg:min-w-[319px]"
+                >
+                  <h4 className="uppercase text-white text-[24px] md:text-[28px] leading-[113%] ">
+                    {item.title}
+                  </h4>
+                  <span className="min-w-[24px] min-h-[24px] rounded-[8px] flex items-center justify-center m-auto bg-[rgba(255,255,255,.1)] p-2.5">
+                    {item.icon && item.icon.url && (
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.icon.url}`}
+                        alt={item.title}
+                        width={item.icon.width || 40}
+                        height={item.icon.height || 40}
+                      />
+                    )}
+                  </span>
+                  <p className="text-[#EEECDE] text-[18px] lg:text-[22px] font-medium leading-[120%] tracking-[-0.03em]">
+                    {item.text}
+                  </p>
+                </div>
+              </SwiperSlide>
+            ))}
+        </Swiper>
       </div>
     </BackgroundBlock>
   );
