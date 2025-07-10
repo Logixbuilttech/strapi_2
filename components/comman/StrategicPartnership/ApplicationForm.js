@@ -3,10 +3,9 @@
 import BackgroundBlock from "../BackgroundBlock";
 import Container from "@/components/comman/Container";
 import TextInput from "../TextInput";
-import CheckBoxInput from "../CheckboxInput";
 import Textarea from "../Textarea";
-import CheckboxInput from "../CheckboxInput";
 import RadioButton from "../RadioButton";
+// import CheckboxInput from "@/components/comman/CheckboxInput";
 
 const ApplicationForm = () => {
   return (
@@ -39,11 +38,11 @@ const ApplicationForm = () => {
                 Industry Focus
               </h4>
               <div className="flex gap-3">
-                <CheckboxInput id="Agriculture" label="Agriculture" />
-                <CheckBoxInput id="Tourism" label="Tourism" />
+                {/* <CheckboxInput id="Agriculture" label="Agriculture" /> */}
+                {/* <CheckBoxInput id="Tourism" label="Tourism" />
                 <CheckBoxInput id="Tech" label="Tech" />
                 <CheckBoxInput id="Energy" label="Energy" />
-                <CheckBoxInput id="Other" label="Other" />
+                <CheckBoxInput id="Other" label="Other" /> */}
               </div>
             </div>
             <div className="mb-[30px]">
