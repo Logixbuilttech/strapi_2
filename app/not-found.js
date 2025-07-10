@@ -1,7 +1,7 @@
 import Button from "@/components/comman/Button";
 import Container from "@/components/comman/Container";
 
-const Custom404 = () => {
+const NotFound = () => {
   return (
     <>
       <div
@@ -45,9 +45,9 @@ const Custom404 = () => {
         <Container className="max-[767px]:w-fit max-[767px]:whitespace-nowrap max-[767px]:pl-15 max-[767px]:pr-0 !absolute max-[389px]:bottom-10 bottom-20 lg:bottom-[116px] left-1/2 -translate-x-1/2">
           <div className=" md:w-1/2 grid gap-6 lg:gap-12 ml-auto">
             <h3 className="text-[#D2E7D3] text-[24px] lg:text-[28px] leading-[113%]">
-              THIS PAGE DOES NOT EXIST, <br /> DON'T WORRY
+              THIS PAGE DOES NOT EXIST, <br /> DON&apos;T WORRY
             </h3>
-            <Button label="BACK TO HOMEPAGE" align="left"></Button>
+            <Button label="BACK TO HOMEPAGE" align="left" href="/"></Button>
           </div>
         </Container>
       </div>
@@ -55,4 +55,4 @@ const Custom404 = () => {
   );
 };
 
-export default Custom404;
+export default NotFound; 
