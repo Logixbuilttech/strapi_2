@@ -47,7 +47,9 @@ const NotFound = () => {
             <h3 className="text-[#D2E7D3] text-[24px] lg:text-[28px] leading-[113%]">
               THIS PAGE DOES NOT EXIST, <br /> DON&apos;T WORRY
             </h3>
-            <Button label="BACK TO HOMEPAGE" align="left" href="/"></Button>
+            <a href="/">
+            <Button label="BACK TO HOMEPAGE" align="left"></Button>
+            </a>
           </div>
         </Container>
       </div>
