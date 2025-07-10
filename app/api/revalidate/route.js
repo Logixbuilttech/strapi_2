@@ -36,8 +36,11 @@ export async function POST(request) {
         console.log('home data is updated')
       revalidatePath('/');
       break;
-    case 'about':
-      revalidatePath('/about');
+    case 'who-we-are':
+      revalidatePath('/whoweare');
+      break;
+          case 'privacy-policy':
+      revalidatePath('/privacypolicy');
       break;
     case 'post':
       if (entry && entry.slug) {
