@@ -12,7 +12,7 @@ const smallText =
 const ThinkForwardHero = () => {
   return (
     <section className="headBG">
-      <div className="headBG-Bottam"></div>
+      {/* <div className="headBG-Bottam"></div> */}
       <div className="relative z-10">
         <HeroText
           heroParts={heroParts}

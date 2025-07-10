@@ -13,7 +13,12 @@ function renderRichText(parts) {
   }
   return parts.map((part, idx) => {
     if (part.br) return <br key={idx} />;
-    if (part.span) return <span className="highlight" key={idx}>{part.text}</span>;
+    if (part.span)
+      return (
+        <span className="highlight" key={idx}>
+          {part.text}
+        </span>
+      );
     return <React.Fragment key={idx}>{part.text}</React.Fragment>;
   });
 }
@@ -28,17 +33,22 @@ const FeatureCard = ({ data }) => {
             <div
               key={card.id}
               className="grid lg:flex border-[1px] border-[#16363D] rounded-[16px] bg-[rgba(182,225,200,0.3)] text-center \
-              overflow-hidden lg:h-[600px] lg:p-0 p-1 "
+              overflow-hidden lg:h-[500px] xl:h-[600px] lg:p-0 p-1 "
             >
-              <div className="w-full lg:w-1/2 bg-[#16363D] p-10 flex flex-col justify-between gap-10 lg:gap-2 text-center rounded-[12px] lg:rounded-none ">
-                <h3 className="text-[#EEECDE] text-[24px] md:text-[28px] lg:text-[48px] uppercase leading-[113%] text-center">
+              <div className="w-full lg:w-1/2 bg-[#16363D] p-10 flex flex-col justify-between gap-[46px] md:gap-10 lg:gap-2 text-center rounded-[12px] lg:rounded-none ">
+                <h3 className="text-[#EEECDE] text-[24px] md:text-[28px] lg:text-[44px] xl:text-[48px] uppercase leading-[113%] text-center">
                   {renderRichText(parseStrapiRichText(card.title))}
                 </h3>
-                <p className="text-[14px] md:text-[18px] lg:text-[22px] leading-[120%] font-medium tracking-[-0.02em] max-w-[420px] lg:max-w-fit m-auto">
+                <p className="text-[14px] md:text-[18px] lg:text-[22px] leading-[120%] font-medium tracking-[-0.02em] max-w-[420px] lg:max-w-fit mx-auto xl:m-0">
                   {card.text}
                 </p>
                 {card.button && card.button.text && (
-                  <Button label={card.button.text} variant="outline" size="sm" href={card.button.href} />
+                  <Button
+                    label={card.button.text}
+                    variant="outline"
+                    size="sm"
+                    href={card.button.href}
+                  />
                 )}
               </div>
               <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-0">
@@ -56,7 +66,7 @@ const FeatureCard = ({ data }) => {
           ))}
         </div>
       </Container>
-      </div>
+    </div>
   );
 };
 

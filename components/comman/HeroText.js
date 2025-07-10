@@ -37,16 +37,13 @@ const HeroText = ({
 
   return (
     <div>
-      <h2 className="uppercase text-[38px] md:text-[56px] lg:text-[94px] leading-[108%] text-center pt-[112px] md:pt-[152px] lg:pt-[208px] pb-[30px] md:pb-10 lg:pb-12">
+      <h2 className="uppercase text-[38px] md:text-[56px] lg:text-[70px] xl:text-[94px] leading-[108%] text-center pt-[112px] md:pt-[152px] lg:pt-[208px] pb-[30px] md:pb-10 lg:pb-12">
         {heroParts.map((part, index) => {
           if (part.br) {
             return <br key={index} />;
           } else if (part.span) {
             return (
-              <span
-                className="highlight"
-                key={index}
-              >
+              <span className="highlight" key={index}>
                 {part.text}
               </span>
             );
@@ -58,7 +55,7 @@ const HeroText = ({
 
       {(smallText || showButton) && (
         <div
-          className={`border-t-[1px] border-[rgba(238,236,222,.15)] pt-[30px] md:pt-10 lg:pt-12 ${className}`}
+          className={`border-t-[1px] border-[rgba(238,236,222,.15)] pt-[30px] md:pt-10 xl:pt-12 px-5 ${className}`}
         >
           <div className="justify-center grid text-center max-w-[650px] mx-auto">
             {renderSmallText()}

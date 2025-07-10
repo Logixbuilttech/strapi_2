@@ -11,7 +11,7 @@ import Button from "@/components/comman/Button";
 import { parseStrapiRichText } from "@/lib/parseStrapiRichText";
 
 const ServicesBlock = ({ data }) => {
-  console.log("🚀 ~ ServicesBlock ~ data:", data)
+  console.log("🚀 ~ ServicesBlock ~ data:", data);
   if (!data) return null;
 
   // Parse rightText and subText arrays
@@ -19,13 +19,24 @@ const ServicesBlock = ({ data }) => {
   // Parse the whole subText array at once
   const descriptionParts = parseStrapiRichText(data.subText);
   return (
-      <Container>
-        <SectionBlock
-          title={data.leftText || ""}
-          heading={headingParts}
-          DescriptionText={descriptionParts}          
-        />
-      </Container>
+    // <BackgroundBlock variant="lightBG">
+    //   <Container>
+    //     <SectionBlock
+    //       title={data.leftText || ""}
+    //       heading={headingParts}
+    //       DescriptionText={descriptionParts}
+    //       className="!pb-0"
+    //     />
+    //   </Container>
+    // </BackgroundBlock>
+
+    <Container>
+      <SectionBlock
+        title={data.leftText || ""}
+        heading={headingParts}
+        DescriptionText={descriptionParts}
+      />
+    </Container>
   );
 };
 

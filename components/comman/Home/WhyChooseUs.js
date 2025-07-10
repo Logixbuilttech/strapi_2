@@ -12,7 +12,12 @@ function renderRichText(parts) {
   }
   return parts.map((part, idx) => {
     if (part.br) return <br key={idx} />;
-    if (part.span) return <span className="highlight" key={idx}>{part.text}</span>;
+    if (part.span)
+      return (
+        <span className="highlight" key={idx}>
+          {part.text}
+        </span>
+      );
     return <React.Fragment key={idx}>{part.text}</React.Fragment>;
   });
 }
@@ -26,13 +31,13 @@ const WhyChooseUs = ({ data }) => {
   return (
     <BackgroundBlock>
       <Container>
-        <div className="grid gap-4 justify-center text-center pb-12 lg:pb-[64px]">
+        <div className="grid gap-3 md:gap-4 justify-center text-center pb-12 lg:pb-[64px]">
           {data.subTitle && (
             <p className="text-[#EEECDE] text-[10px] md:text-[14px] lg:text-[18px] leading-[100%] tracking-[-0.02em] uppercase font-semibold">
               {data.subTitle}
             </p>
           )}
-          <h3 className="text-[30px] md:text-[44px] lg:text-[66px] text-[#EEECDE] leading-[113%] uppercase">
+          <h3 className="text-[30px] md:text-[44px] lg:text-[66px] text-[#EEECDE] leading-[113%] uppercase flex items-center gap-2">
             {mainTitle}
           </h3>
         </div>
@@ -49,7 +54,7 @@ const WhyChooseUs = ({ data }) => {
               <h4 className="uppercase text-white text-[24px] md:text-[28px] leading-[113%] ">
                 {item.title}
               </h4>
-              <span className="min-w-[24px] min-h-[24px] rounded-[8px] flex items-center justify-center m-auto bg-[rgba(255,255,255,.1)] p-2.5">
+              <span className="max-w-[64px] max-h-[64px] min-w-[64px] min-h-[64px] rounded-[8px] flex items-center justify-center m-auto bg-[rgba(255,255,255,.1)] p-2.5">
                 {item.icon && item.icon.url && (
                   <Image
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.icon.url}`}
@@ -59,7 +64,7 @@ const WhyChooseUs = ({ data }) => {
                   />
                 )}
               </span>
-              <p className="text-[#EEECDE] text-[18px] lg:text-[22px] font-medium leading-[120%] tracking-[-0.03em]">
+              <p className="text-[#EEECDE] text-[14px] md:text-[18px] lg:text-[22px] font-medium leading-[120%] tracking-[-0.03em]">
                 {item.text}
               </p>
             </div>

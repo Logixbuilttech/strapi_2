@@ -15,7 +15,12 @@ function renderRichText(parts) {
   }
   return parts.map((part, idx) => {
     if (part.br) return <br key={idx} />;
-    if (part.span) return <span className="highlight" key={idx}>{part.text}</span>;
+    if (part.span)
+      return (
+        <span className="highlight" key={idx}>
+          {part.text}
+        </span>
+      );
     return <React.Fragment key={idx}>{part.text}</React.Fragment>;
   });
 }
@@ -116,7 +121,7 @@ const Footer = ({ FooterData }) => {
                 </p>
                 <ul className="grid gap-3 sm:gap-2">
                   {nav.map((item) => (
-                    <li key={item.id} className="leading-[100%]">
+                    <li key={item.id} className="leading-[19px]">
                       <Link
                         href={item.href}
                         className="text-[14px] sm:text-[16px] text-[#16363D] tracking-[-0.02em] leading-[100%] font-Archivo font-medium"
@@ -135,13 +140,14 @@ const Footer = ({ FooterData }) => {
                 {brandName}
               </h2>
             </div>
-            <div className="w-full lg:w-1/2 flex justify-between items-center">
+            <div className="w-full lg:w-1/2 flex justify-between items-center flex-row-reverse lg:flex-row">
               <p className="text-[14px] text-[rgba(22,54,61,.4)] leading-[120%] font-medium tracking-[-0.02em]">
-              {FooterData?.RenewEdge || "RenewEdge Solutions"} {new Date().getFullYear()}
+                {FooterData?.RenewEdge || "RenewEdge Solutions"}{" "}
+                {new Date().getFullYear()}
               </p>
               {privacy && (
                 <Link
-                  className="text-[14px] text-[rgba(22,54,61,.4)] leading-[120%] font-medium tracking-[-0.02em]"
+                  className="text-[14px] text-[rgba(22,54,61,.4)] leading-[120%] font-medium tracking-[-0.02em] underline"
                   href={privacy.href}
                 >
                   {privacy.Name}

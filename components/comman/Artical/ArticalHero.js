@@ -9,7 +9,7 @@ const heroParts = [
 const ArticalHero = () => {
   return (
     <section className="headBG">
-      <div className="headBG-Bottam"></div>
+      {/* <div className="headBG-Bottam"></div> */}
       <div className="relative z-10">
         <HeroText heroParts={heroParts} className="pb-12 lg:pb-[64px]" />
       </div>

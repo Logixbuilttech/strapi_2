@@ -17,20 +17,24 @@ export default async function PrivacyPolicy() {
   // Helper to parse Strapi rich text to a single string (for title)
   function parseRichTextToString(richText) {
     return richText
-      .map(block => (block.children ? block.children.map(child => child.text).join('') : ''))
-      .join(' ')
+      .map((block) =>
+        block.children ? block.children.map((child) => child.text).join("") : ""
+      )
+      .join(" ")
       .trim();
   }
 
   // Helper to parse Strapi rich text to array of paragraphs (for DescriptionText)
   function parseRichTextToParagraphs(richText) {
     return richText
-      .map(block => (block.children ? block.children.map(child => child.text).join('') : ''))
-      .filter(text => text.trim() !== '');
+      .map((block) =>
+        block.children ? block.children.map((child) => child.text).join("") : ""
+      )
+      .filter((text) => text.trim() !== "");
   }
 
   const blocks = PrivacyPolicyData.PrivacyPolicy || [];
-  console.log("🚀 ~ PrivacyPolicy ~ blocks:", JSON.stringify(blocks))
+  console.log("🚀 ~ PrivacyPolicy ~ blocks:", JSON.stringify(blocks));
 
   return (
     <>
@@ -42,14 +46,16 @@ export default async function PrivacyPolicy() {
             return (
               <BackgroundBlock variant="lightBG" key={b.id}>
                 <Container>
-                  {b.PrivacyPolicy && b.PrivacyPolicy.map((policy, idx) => (
-                    <SectionBlock
-                      key={policy.id}
-                      badgeNumber={idx + 1}
-                      heading={parseRichTextToString(policy.Title)}
-                      DescriptionText={parseRichTextToParagraphs(policy.Info)}
-                    />
-                  ))}
+                  {b.PrivacyPolicy &&
+                    b.PrivacyPolicy.map((policy, idx) => (
+                      <SectionBlock
+                        key={policy.id}
+                        badgeNumber={idx + 1}
+                        heading={parseRichTextToString(policy.Title)}
+                        DescriptionText={parseRichTextToParagraphs(policy.Info)}
+                        widthFull={true}
+                      />
+                    ))}
                 </Container>
               </BackgroundBlock>
             );
