@@ -41,7 +41,7 @@ const OurProcess = ({ data }) => {
               >
                 <div className="w-full flex items-center">
                   <div className="w-[90px] md:w-[176px] lg:w-[110px]">
-                    <p className="bg-[#16363D] w-[24px] h-[24px] md:w-[42px] md:h-[42px] rounded-full  flex justify-center items-center text-[12px] md:text-[22px] font-Archivo font-medium ">
+                    <p className="bg-[#16363D] w-[24px] h-[24px] md:w-[42px] md:h-[42px] rounded-full  flex justify-center items-center text-[12px] md:text-[22px] font-Archivo font-medium text-[#EEECDE]">
                       {index + 1}
                     </p>
                   </div>

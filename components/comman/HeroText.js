@@ -37,7 +37,7 @@ const HeroText = ({
 
   return (
     <div>
-      <h2 className="uppercase text-[38px] md:text-[56px] lg:text-[70px] xl:text-[94px] leading-[108%] text-center pt-[112px] md:pt-[152px] lg:pt-[208px] pb-[30px] md:pb-10 lg:pb-12">
+      <h2 className="uppercase text-[38px] md:text-[56px] lg:text-[70px] xl:text-[94px] leading-[108%] text-center pt-[112px] md:pt-[152px] lg:pt-[208px] pb-[30px] md:pb-10 lg:pb-12 text-[#EEECDE]">
         {heroParts.map((part, index) => {
           if (part.br) {
             return <br key={index} />;
