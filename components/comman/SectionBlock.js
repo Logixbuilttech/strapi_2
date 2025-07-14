@@ -41,8 +41,6 @@ const SectionBlock = ({
   className = "",
   widthFull = null,
 }) => {
-  console.log("🚀 ~ DescriptionText:", DescriptionText);
-  console.log("🚀 ~ title:", title);
   return (
     <div className={`pb-12 lg:pb-[64px] ${className}`}>
       <div className="flex pb-[30px] md:pb-10 lg:pb-[48px]">

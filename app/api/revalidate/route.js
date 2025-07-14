@@ -5,7 +5,6 @@ import { revalidatePath, revalidateTag } from 'next/cache';
 export async function POST(request) {
   // authorize
   const auth = request.headers.get('authorization') || '';
-//   console.log("🚀 ~ POST ~ auth:", auth)
   const token = auth.split(' ')[1];
   if (token !== process.env.REVALIDATE_SECRET) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
@@ -20,26 +19,31 @@ export async function POST(request) {
   }
 
   const { model, entry } = body;
-  console.log("🚀 ~ POST ~ model:", model)
   if (!model) {
     return NextResponse.json({ message: 'Missing model' }, { status: 400 });
   }
 
   // revalidate based on content type
   switch (model) {
-       case 'global':
+    case 'global':
       console.log('Global data updated — invalidating global cache');
       revalidateTag('global');
       revalidatePath('/');  // or use layout type if needed
       break;
     case 'home':
-        console.log('home data is updated')
+      console.log('home data is updated')
       revalidatePath('/');
       break;
     case 'who-we-are':
       revalidatePath('/whoweare');
       break;
-          case 'privacy-policy':
+    case 'article':
+      revalidatePath('/thinkforward');
+      break;
+    case 'gallery-category':
+      revalidatePath('/thinkforward');
+      break;
+    case 'privacy-policy':
       revalidatePath('/privacypolicy');
       break;
     case 'post':
@@ -51,7 +55,7 @@ export async function POST(request) {
       break;
     // add more cases as needed:
     // case 'contact': revalidatePath('/contact'); break;
-      case 'cache':
+    case 'cache':
       console.log(' Received `cache` model - no action taken');
       break;
     default:

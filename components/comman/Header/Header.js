@@ -75,7 +75,7 @@ const Header = ({ HeaderData }) => {
             </div>
 
             <div className="logo flex items-center">
-              <Link href="">
+              <Link href="/">
                 <Image
                   className="desktopView"
                   src={Logo}

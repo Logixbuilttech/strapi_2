@@ -11,7 +11,6 @@ import Button from "@/components/comman/Button";
 import { parseStrapiRichText } from "@/lib/parseStrapiRichText";
 
 const ServicesBlock = ({ data }) => {
-  console.log("🚀 ~ ServicesBlock ~ data:", data);
   if (!data) return null;
 
   // Parse rightText and subText arrays
