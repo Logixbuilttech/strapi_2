@@ -23,28 +23,35 @@ import Link from "next/link";
 
 export default function GalleryGrid({ articleData, articleCategoryData }) {
   const [active, setActive] = useState("All");
-  const CATEGORIES = useMemo(() => ["All", ...articleCategoryData.map(c => c.Name)], [articleCategoryData]);
-
+  const CATEGORIES = useMemo(
+    () => ["All", ...articleCategoryData.map((c) => c.Name)],
+    [articleCategoryData]
+  );
 
   const dynamicImages = useMemo(() => {
-    return articleData.map((article) => ({
-      id: article.id.toString(),
-      src: article.CoverImage?.url ? `${article.CoverImage.url}` : "",
-      category: article.Category?.Name || "Other",
-      width: article.CoverImage?.formats?.small?.width,
-      height: article.CoverImage?.formats?.small?.height,
-      text: article.Description?.[0]?.children?.[0]?.text || article.Content || "No description available",
-      createdAt: article.createdAt,
-      slug: article.Slug
-    }))
+    return articleData
+      .map((article) => ({
+        id: article.id.toString(),
+        src: article.CoverImage?.url ? `${article.CoverImage.url}` : "",
+        category: article.Category?.Name || "Other",
+        width: article.CoverImage?.formats?.small?.width,
+        height: article.CoverImage?.formats?.small?.height,
+        text:
+          article.Description?.[0]?.children?.[0]?.text ||
+          article.Content ||
+          "No description available",
+        createdAt: article.createdAt,
+        slug: article.Slug,
+      }))
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); // Sort by newest first
   }, [articleData]);
 
   const images = useMemo(
-    () => dynamicImages.filter((i) => active === "All" || i.category === active),
+    () =>
+      dynamicImages.filter((i) => active === "All" || i.category === active),
     [active, dynamicImages]
   );
-  console.log("🚀 ~ GalleryGrid ~ images:", images)
+  console.log("🚀 ~ GalleryGrid ~ images:", images);
 
   return (
     <BackgroundBlock variant="lightBG">
@@ -55,10 +62,11 @@ export default function GalleryGrid({ articleData, articleCategoryData }) {
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
-                className={`cursor-pointer transition px-[30px] py-[19px] border-[2px] border-[rgba(22,54,61,.6)] uppercase text-[18px] font-Archivo tracking-[-.02em] leading-[100%]  whitespace-nowrap rounded-full font-semibold ${active === cat
-                  ? "bg-[#16363D] text-[#EEECDE]"
-                  : "bg-[#EEECDE] text-[#16363D] hover:bg-[#16363D] hover:text-[#EEECDE]"
-                  }`}
+                className={`cursor-pointer transition px-[30px] py-[19px] border-[2px] border-[rgba(22,54,61,.6)] uppercase text-[18px] font-Archivo tracking-[-.02em] leading-[100%]  whitespace-nowrap rounded-full font-semibold ${
+                  active === cat
+                    ? "bg-[#16363D] text-[#EEECDE]"
+                    : "bg-[#EEECDE] text-[#16363D] hover:bg-[#16363D] hover:text-[#EEECDE]"
+                }`}
               >
                 {cat}
               </button>
@@ -70,7 +78,10 @@ export default function GalleryGrid({ articleData, articleCategoryData }) {
             >
               <Masonry gutter="12px">
                 {images.map((img, i) => (
-                  <div key={i} className="relative group rounded-[16px] overflow-hidden transition w-full">
+                  <div
+                    key={i}
+                    className="relative group rounded-[16px] overflow-hidden transition w-full"
+                  >
                     <div className="absolute inset-0 transition before:content-[''] before:absolute before:inset-0 group-hover:before:bg-black/20"></div>
                     <Image
                       key={img.id}
@@ -78,11 +89,10 @@ export default function GalleryGrid({ articleData, articleCategoryData }) {
                       alt={img.category}
                       width={img.width || 500} // Optional: based on your backend data
                       height={img.height || 500} // Optional
-
                     />
                     <span
                       className="absolute top-6 left-6 text-[14px] text-white tracking-[.02em] leading-[100%] font-semibold font-Archivo uppercase
-                      bg-[rgba(255,255,255,0.16)]  backdrop-sepia-[blur(67px)] px-4 py-[9px] rounded-full"
+                      bg-[rgba(255,255,255,0.25)]  backdrop-sepia-[blur(2px)] px-4 py-[9px] rounded-full"
                     >
                       {img.category}
                     </span>
@@ -90,9 +100,11 @@ export default function GalleryGrid({ articleData, articleCategoryData }) {
                       <Link href={`/article/${img.slug}`}>
                         <Button label="Know More" align="left" color="dark" />
                       </Link>
-                      <p className="bg-[#EEECDE] py-6 px-8 text-[#16363D] rounded-[20px] text-[22px] font-medium font-Archivo leading-[120%] tracking-[.02em]">
-                        {img.text}
-                      </p>
+                      <div className="bg-[#EEECDE] py-6 px-8 rounded-full">
+                        <p className=" text-[#16363D]  text-[22px] font-medium font-Archivo leading-[26px] tracking-[.02em] line-clamp-2">
+                          {img.text}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 ))}

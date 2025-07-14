@@ -1,9 +1,17 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { parseStrapiRichText } from "@/lib/parseStrapiRichText";
+import Container from "@/components/comman/Container";
+import Link from "next/link";
+import Facebook from "@/public/images/facebook-02.svg";
+import whatsUp02 from "@/public/images/whatsUp02.svg";
+import Twitter from "@/public/images/Twitter.svg";
+import Linkedin from "@/public/images/Linkedin.svg";
 
+// --- Utility: Slugify & Ensure Unique IDs ---
 function slugify(text) {
   return text
     .toString()
@@ -13,49 +21,66 @@ function slugify(text) {
     .replace(/-+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
+function uniqueSlugify(text, existingIds) {
+  let slug = slugify(text);
+  let counter = 1;
+  while (existingIds.has(slug)) {
+    slug = `${slug}-${counter++}`;
+  }
+  existingIds.add(slug);
+  return slug;
+}
 
-// --- Add this CSS to your globals.css ---
-// html { scroll-behavior: smooth; }
-// [id] { scroll-margin-top: 120px; } // Match your sticky header height
-
+// --- Scroll Spy Hook ---
 function useScrollSpy(ids, offset = 120) {
   const [activeId, setActiveId] = useState();
+
   useEffect(() => {
     if (!ids.length) return;
+
     const handleObserve = (entries) => {
-      const intersecting = entries
-        .filter(entry => entry.isIntersecting)
-        .map(entry => entry.target.id);
-      console.log('Intersecting IDs:', intersecting);
-      if (intersecting.length > 0) {
-        const firstVisible = ids.find(id => intersecting.includes(id));
-        console.log('Setting activeId to:', firstVisible);
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .map((entry) => entry.target.id);
+
+      if (visible.length > 0) {
+        const firstVisible = ids.find((id) => visible.includes(id));
         setActiveId(firstVisible);
-      } else if (entries.length > 0) {
-        console.log('No intersecting headings, setting to first id:', ids[0]);
-        setActiveId(ids[0]);
       }
     };
-    const observer = new window.IntersectionObserver(handleObserve, {
+
+    const observer = new IntersectionObserver(handleObserve, {
       rootMargin: `-${offset}px 0px 0px 0px`,
-      threshold: 0.1, // 10% of heading must be visible
+      threshold: [0.5],
     });
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+
+    const timeout = setTimeout(() => {
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+    }, 100); // Delay to ensure DOM is ready
+
+    return () => {
+      clearTimeout(timeout);
+      observer.disconnect();
+    };
   }, [ids, offset]);
+
   return activeId;
 }
-// Utility to extract plain text from React children
+
+// --- Extract plain text from children ---
 function getTextFromChildren(children) {
-  if (typeof children === 'string') return children;
-  if (Array.isArray(children)) return children.map(getTextFromChildren).join('');
-  if (children && typeof children === 'object' && children.props) return getTextFromChildren(children.props.children);
-  return '';
+  if (typeof children === "string") return children;
+  if (Array.isArray(children))
+    return children.map(getTextFromChildren).join("");
+  if (children && typeof children === "object" && children.props)
+    return getTextFromChildren(children.props.children);
+  return "";
 }
 
+// --- Main Component ---
 export default function ArticleWithTOC({ article }) {
   const {
     HeroText,
@@ -68,11 +93,12 @@ export default function ArticleWithTOC({ article }) {
     CoverImage,
   } = article;
 
+  const title = parseStrapiRichText(Title);
   const coverUrl = CoverImage?.url
     ? process.env.NEXT_PUBLIC_STRAPI_API_URL + CoverImage.url
     : null;
 
-  // Remove first image markdown if it matches the cover image
+  // Remove first image from markdown if it matches cover
   let filteredContent = Content;
   if (coverUrl && Content) {
     const coverFileName = CoverImage.name;
@@ -82,127 +108,209 @@ export default function ArticleWithTOC({ article }) {
     );
   }
 
-  // --- TOC logic ---
+  // --- Generate Headings ---
   const [headings, setHeadings] = useState([]);
   const contentRef = useRef(null);
 
-  // Parse headings from markdown
   useEffect(() => {
     const regex = /^##\s+(.+)$/gm;
     const found = [];
+    const existingIds = new Set();
     let match;
     while ((match = regex.exec(filteredContent))) {
       const text = match[1].trim();
-      found.push({ text, id: slugify(text) });
+      const id = uniqueSlugify(text, existingIds);
+      found.push({ text, id });
     }
     setHeadings(found);
   }, [filteredContent]);
 
-  const headingIds = headings.map(h => h.id);
-  const activeId = useScrollSpy(headingIds, 120);
+  const headingIds = headings.map((h) => h.id);
+  const activeId = useScrollSpy(headingIds, 130); // match with scroll-mt
 
-  // Custom renderer for h2 to add id
+  // --- Markdown Rendering ---
   const components = {
     h2: ({ node, children, ...props }) => {
       const text = getTextFromChildren(children);
       const id = slugify(text);
       return (
-        <h2 id={id} className="!text-2xl !font-bold !mt-8 !mb-4 scroll-mt-32" {...props}>
+        <h2
+          id={id}
+          className="text-[#16363D] text-[24px] md:text-[28px] lg:text-[48px] font-Anton leading-[113%] uppercase pb-[30px] md:pb-10 lg:pb-12 block"
+          {...props}
+        >
           {children}
         </h2>
       );
     },
-    h3: ({ node, ...props }) => <h3 className="!text-xl !font-semibold !mt-6 !mb-3" {...props} />,
-    p: ({ node, ...props }) => <p className="!text-base !mb-4" {...props} />,
-    img: ({ node, ...props }) => (
-      <img
+    h3: ({ node, ...props }) => (
+      <h3
+        className="text-[#16363D] text-[24px] md:text-[28px] lg:text-[48px] font-Anton leading-[113%] uppercase pb-[30px] md:pb-10 lg:pb-12 block"
         {...props}
-        className="rounded-lg mx-auto my-6"
-        style={{ maxHeight: 400, objectFit: "cover" }}
-        alt={props.alt || ""}
       />
     ),
-    ul: ({ node, ...props }) => <ul className="list-disc pl-6 mb-4" {...props} />,
-    ol: ({ node, ...props }) => <ol className="list-decimal pl-6 mb-4" {...props} />,
+    p: ({ node, ...props }) => (
+      <p
+        className="text-[#16363D] text-[14px] md:text-[18px] lg:text-[22px] leading-[120%] -tracking-[.02em] font-medium pb-[30px] md:pb-10 lg:pb-12 mb-[30px] md:mb-10 lg:mb-12 block
+        border-b-[1px] border-[rgba(22,54,61,0.15)]"
+        {...props}
+      />
+    ),
+    img: ({ node, src = "", alt = "", ...props }) => {
+      // Prepend full Strapi URL if image src is relative (starts with /uploads/)
+      let finalSrc = src;
+
+      if (src?.startsWith("/uploads")) {
+        finalSrc = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`;
+      }
+
+      return (
+        <img
+          {...props}
+          src={"https://e83ef2399875.ngrok-free.app/uploads/01_fce26a3923.jpg"}
+          alt={alt}
+          className="rounded-[16px]"
+        />
+      );
+    },
+
+    ul: ({ node, ...props }) => (
+      <ul className="list-disc pl-6 mb-4" {...props} />
+    ),
+    ol: ({ node, ...props }) => (
+      <ol className="list-decimal pl-6 mb-4" {...props} />
+    ),
     li: ({ node, ...props }) => <li className="mb-2" {...props} />,
   };
 
   return (
-    <main className="bg-[#eaf0e7] min-h-screen font-sans">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-[#1a3c3c] to-[#2e5d5d] text-white py-8 px-4 flex flex-col items-center">
-        <div className="w-full max-w-5xl flex flex-col items-center">
-          <h2 className="text-center text-2xl md:text-4xl font-bold tracking-wide uppercase mb-2">
-            {HeroText}
-          </h2>
-          <div className="w-16 h-1 bg-[#eaf0e7] my-4 rounded" />
-          <h1 className="text-center text-xl md:text-3xl font-extrabold uppercase mb-2">
-            {Title}
-          </h1>
-          {Description && (
-            <p className="text-center text-base md:text-lg text-[#eaf0e7] mb-2">
-              {Description[0]?.children?.map((c) => c.text).join(" ")}
-            </p>
-          )}
-         
-          <div className="flex flex-wrap justify-center gap-2 text-xs text-[#eaf0e7] opacity-80 mb-2">
-            <span className="font-semibold">{Author}</span>
-            <span className="mx-1">|</span>
-            <span>{Category?.Name}</span>
-            <span className="mx-1">|</span>
-            <span>{PublishedTime}</span>
-          </div>
+    <div className="bg-[#EEECDE] rounded-[16px_16px_0_0]  relative z-10 -mt-5">
+      <section className="pt-[64px] md:pt-[72px] lg:pt-[82px] xl:pt-[96px]">
+        <div className="w-full pb-12">
+          <Container className="flex">
+            <div className="w-[90px] md:w-[176px] lg:w-1/2">
+              <span className="bg-[#16363D] rounded-full px-4 py-[9px] font-Archivo font-medium -tracking-[.02em] text-[14px] leading-[14px] text-white uppercase w-fit block">
+                Tech
+              </span>
+            </div>
+            <div className="w-[calc(100%-90px)] md:w-[calc(100%-176px)] lg:w-1/2">
+              <h3 className="text-[30px] md:text-[44px] lg:text-[56px] xl:text-[66px] leading-[113%] font-normal uppercase text-[#16363D] flex gap-2 items-center">
+                {title.map((part, index) => {
+                  if (part.br) return <br key={index} />;
+                  if (part.span)
+                    return (
+                      <span className="highlight" key={index}>
+                        {part.text}
+                      </span>
+                    );
+                  return (
+                    <React.Fragment key={index}>{part.text}</React.Fragment>
+                  );
+                })}
+              </h3>
+            </div>
+          </Container>
+        </div>
+        <div className="relative  py-[30px] md:py-10 lg:py-12 border-[rgba(22,54,61,.15)] border-t-[1px]">
+          <Container className="grid md:flex items-baseline gap-[30px] md:gap-0">
+            <div className="w-[90px] md:w-[176px] lg:w-1/2 text-[14px] lg:text-[16px] text-[#000] leading-[120%] -tracking-[.02em] font-Archivo">
+              <span className="block">{Author}</span>
+              {/* <span className="mx-1">|</span> */}
+              <span className="block">{Category?.Name}</span>
+              {/* <span className="mx-1">|</span> */}
+              <span className="block">{PublishedTime}</span>
+            </div>
+            <div className="w-[calc(100%-90px)] md:w-[calc(100%-176px)] lg:w-1/2">
+              {Description && (
+                <p className=" text-[#16363D] text-[14px] md:text-[18px] lg:text-[22px] leading-[120%] -tracking-[.02em] font-medium font-Archivo">
+                  {Description[0]?.children?.map((c) => c.text).join(" ")}
+                </p>
+              )}
+            </div>
+          </Container>
         </div>
       </section>
-
-      {/* Article Layout */}
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8 px-4 py-8">
-        {/* TOC Sidebar */}
-        <aside className="md:w-1/4 w-full mb-8 md:mb-0 md:sticky md:top-32 h-fit">
-          {headings.length > 0 && (
-            <nav className="bg-[#f5f7f2] rounded-xl p-4 border border-[#e0e4db]">
-              <div className="font-bold text-[#16363D] text-lg mb-2">Contents</div>
-              <ul className="space-y-2">
+      <section className="pb-[30px] md:pb-10 lg:pb-12">
+        <Container>
+          {coverUrl && (
+            <Image
+              src={coverUrl}
+              alt={Title}
+              width={CoverImage.width}
+              height={CoverImage.height}
+              className="rounded-lg w-full object-cover"
+              priority
+            />
+          )}
+        </Container>
+      </section>
+      <section className="pb-24">
+        <Container className="grid gap-[30px] md:gap-10 lg:gap-[120px] lg:flex items-baseline ">
+          <aside className="w-full lg:w-[215px] lg:sticky lg:top-32 h-fit bg-[#EEECDE]">
+            {headings.length > 0 && (
+              <ul className="grid gap-3">
                 {headings.map(({ text, id }) => (
                   <li key={id}>
-                    <a
+                    <Link
                       href={`#${id}`}
-                      className={`block pl-2 border-l-4 text-[15px] font-medium font-Archivo transition-colors duration-200
-                        ${activeId === id ? "toc-active" : "border-transparent text-[#16363D] hover:text-[#199E88]"}
-                      `}
+                      className={`text-[rgba(22,54,61,.5)] relative text-[14px] lg:text-[16px] font-Archivo pl-3
+                      -tracking-[.03em] font-medium leading-[19px]  before:content-[''] before:w-[5px] before:h-[5px] before:absolute 
+                      before:left-0 before:top-1/2 before:bg-[rgba(22,54,61,.5)] before:-translate-y-1/2 before:rounded-full
+                      hover:text-[#199E88] hover:before:bg-[#199E88] 
+                       ${
+                         activeId === id
+                           ? "!text-[#199E88] before:!bg-[#199E88]"
+                           : "text-[#16363D] before:bg-[rgba(22,54,61,.5)]"
+                       }`}
                     >
                       {text}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
-            </nav>
-          )}
-        </aside>
+            )}
+          </aside>
 
-        {/* Article Content */}
-        <article className="prose prose-lg max-w-none flex-1 text-black rounded-xl shadow-md p-8">
-          {/* Cover Image */}
-          {coverUrl && (
-            <div className="mb-8">
-              <Image
-                src={coverUrl}
-                alt={Title}
-                width={CoverImage.width}
-                height={CoverImage.height}
-                className="rounded-lg w-full object-cover"
-                priority
-              />
-            </div>
-          )}
-          {/* Markdown Content */}
-          <div ref={contentRef}>
+          <div
+            className="w-full lg:w-[calc(100%-662px)] text-[#16363D]"
+            ref={contentRef}
+          >
             <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
               {filteredContent}
             </ReactMarkdown>
           </div>
-        </article>
-      </div>
-    </main>
+
+          <div className="w-full lg:w-[210px] grid gap-3 lg:sticky lg:top-32 h-fit">
+            <p className="text-[rgba(22,54,61,.6)] text-[18px] font-semibold leading-[100%] uppercase -tracking-[.02em]">
+              Share this article
+            </p>
+            <ul className="flex gap-3">
+              <li>
+                <Link href="">
+                  <Image src={Facebook} alt="" />
+                </Link>
+              </li>
+
+              <li>
+                <Link href="">
+                  <Image src={whatsUp02} alt="" />
+                </Link>
+              </li>
+              <li>
+                <Link href="">
+                  <Image src={Twitter} alt="" />
+                </Link>
+              </li>
+
+              <li>
+                <Link href="">
+                  <Image src={Linkedin} alt="" />
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </Container>
+      </section>
+    </div>
   );
-} 
+}

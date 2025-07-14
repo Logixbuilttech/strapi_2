@@ -28,7 +28,9 @@ function renderRichText(parts) {
 const Footer = ({ FooterData }) => {
   const pathname = usePathname();
   const showTopBorder =
-    pathname === "/privacypolicy" || pathname === "/thinkforward";
+    pathname === "/privacypolicy" ||
+    pathname === "/thinkforward" ||
+    pathname.startsWith("/article/");
 
   // Dynamic data
   const brandName = renderRichText(parseStrapiRichText(FooterData?.Name));
