@@ -27,7 +27,7 @@ export default async function Home() {
             return <HomeHero key={b.id} data={b} />;
           case "layout.content-block":
             return (
-              <>
+              
                 <div
                   key={b.id}
                   className={`bg-[#EEECDE] rounded-[16px_16px_0_0] pt-[64px] md:pt-[72px] lg:pt-[82px] xl:pt-[96px] relative z-10 -mt-5 ${
@@ -36,7 +36,7 @@ export default async function Home() {
                 >
                   <ServicesBlock key={b.id} data={b} />
                 </div>
-              </>
+             
             );
           case "layout.feature-card":
             return <FeatureCard key={b.id} data={b} />;

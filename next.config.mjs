@@ -1,18 +1,26 @@
+// next.config.mjs
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    legacyBrowsers: false,
-    browsersListForSwc: true,
-  },
+export default {
   eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true, // ⚠️ use only if you're sure
+    ignoreBuildErrors: true,
   },
   images: {
-    domains: ["localhost", "e83ef2399875.ngrok-free.app"], // Add any other domains here
+    domains: ["localhost", "e83ef2399875.ngrok-free.app"],
+  },
+  webpack: (config, { isServer, webpack }) => {
+    // No need to import 'webpack' via `import webpack from 'webpack'`
+    if (!isServer) {
+      config.plugins.push(
+        new webpack.ProvidePlugin({
+          $: "jquery",
+          jQuery: "jquery",
+          "window.jQuery": "jquery",
+        })
+      );
+    }
+    return config;
   },
 };
-
-export default nextConfig;

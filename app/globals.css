@@ -262,3 +262,16 @@ a.toc-active {
   border-color: #199e88 !important;
   background: #eaf0e7 !important;
 }
+
+.owl-stage {
+  display: flex !important;
+}
+.owl-nav, .owl-dots {
+  display: none !important;
+}
+.owl-carousel {
+  overflow: hidden;
+}
+.owl-carousel:not(.owl-loaded) {
+  visibility: hidden;
+}

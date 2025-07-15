@@ -1,13 +1,16 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import BackgroundBlock from "@/components/comman/BackgroundBlock";
 import Container from "@/components/comman/Container";
 import { parseStrapiRichText } from "@/lib/parseStrapiRichText";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
+  ssr: false,
+});
 
-// Helper to render parsed rich text arrays (with highlight support)
 function renderRichText(parts) {
   if (!Array.isArray(parts)) {
     if (typeof parts === "string") return parts;
@@ -26,10 +29,20 @@ function renderRichText(parts) {
 }
 
 const WhyChooseUs = ({ data }) => {
+  const carousel = useRef(null);
   if (!data) return null;
 
-  // Parse the main title (rich text)
   const mainTitle = renderRichText(parseStrapiRichText(data.title));
+
+  // Owl options
+  const options = {
+    loop: true,
+    autoWidth: true,
+    margin: 0,
+    nav: false,
+    dots: false,
+    responsive: { 0: { items: 1 }, 768: { items: 1 } },
+  };
 
   return (
     <BackgroundBlock>
@@ -47,41 +60,38 @@ const WhyChooseUs = ({ data }) => {
       </Container>
 
       <div className="max-w-[1360px] w-full px-6 m-auto">
-        <Swiper
-          spaceBetween={12}
-          slidesPerView={1}
-          breakpoints={{
-            768: { slidesPerView: 3 },
-            1024: { slidesPerView: 4 },
-          }}
+        <OwlCarousel
+          options={options}
+          ref={carousel}
+          className="owl-theme"
         >
           {Array.isArray(data.Item) &&
             data.Item.map((item) => (
-              <SwiperSlide key={item.id}>
-                <div
-                  className="bg-[rgba(255,255,255,.07)] rounded-[16px] p-6 flex flex-col gap-2 justify-between text-center items-center
-                    h-[342px] lg:h-[382px] w-full"
-                >
-                  <h4 className="uppercase text-white text-[24px] md:text-[28px] leading-[113%] ">
-                    {item.title}
-                  </h4>
-                  <span className="min-w-[24px] min-h-[24px] rounded-[8px] flex items-center justify-center m-auto bg-[rgba(255,255,255,.1)] p-2.5">
-                    {item.icon && item.icon.url && (
-                      <Image
-                        src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.icon.url}`}
-                        alt={item.title}
-                        width={item.icon.width || 40}
-                        height={item.icon.height || 40}
-                      />
-                    )}
-                  </span>
-                  <p className="text-[#EEECDE] text-[18px] lg:text-[22px] font-medium leading-[120%] tracking-[-0.03em]">
-                    {item.text}
-                  </p>
-                </div>
-              </SwiperSlide>
+              <div
+                className="item bg-[rgba(255,255,255,.07)] rounded-[16px] p-6 flex flex-col gap-2 justify-between text-center items-center h-[342px] lg:h-[382px]"
+                key={item.id}
+                style={{ width: "auto" }}
+              >
+                <h4 className="uppercase text-white text-[24px] md:text-[28px] leading-[113%] ">
+                  {item.title}
+                </h4>
+                <span className="min-w-[24px] min-h-[24px] rounded-[8px] flex items-center justify-center m-auto bg-[rgba(255,255,255,.1)] p-2.5">
+                  {item.icon?.url && (
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.icon.url}`}
+                      alt={item.title}
+                      width={item.icon.width || 40}
+                      height={item.icon.height || 40}
+                      style={{ maxWidth: "100%", height: "auto" }}
+                    />
+                  )}
+                </span>
+                <p className="text-[#EEECDE] text-[18px] lg:text-[22px] font-medium leading-[120%] tracking-[-0.03em]">
+                  {item.text}
+                </p>
+              </div>
             ))}
-        </Swiper>
+        </OwlCarousel>
       </div>
     </BackgroundBlock>
   );
