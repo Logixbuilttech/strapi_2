@@ -8,7 +8,7 @@ export default {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ["localhost", "e83ef2399875.ngrok-free.app"],
+    domains: ["localhost", "da78067daf03.ngrok-free.app"],
   },
   webpack: (config, { isServer, webpack }) => {
     // No need to import 'webpack' via `import webpack from 'webpack'`

@@ -213,6 +213,27 @@ textarea {
   color: #eeecde;
 }
 
+.btmSpace h2 {
+  padding-bottom: 116px;
+}
+
+@media (max-width: 1279px) {
+  .btmSpace h2 {
+    padding-bottom: 102px;
+  }
+}
+@media (max-width: 1024px) {
+  .btmSpace h2 {
+    padding-bottom: 92px;
+  }
+}
+
+@media (max-width: 767px) {
+  .btmSpace h2 {
+    padding-bottom: 84px;
+  }
+}
+
 @media (max-width: 767px) {
   .headerBox {
     height: 52px;
@@ -266,7 +287,8 @@ a.toc-active {
 .owl-stage {
   display: flex !important;
 }
-.owl-nav, .owl-dots {
+.owl-nav,
+.owl-dots {
   display: none !important;
 }
 .owl-carousel {
