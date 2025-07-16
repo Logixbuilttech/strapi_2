@@ -68,9 +68,8 @@ const WhyChooseUs = ({ data }) => {
                 <div
                   className=" bg-[rgba(255,255,255,.07)] rounded-[16px] p-6 flex flex-col gap-2 justify-between text-center items-center h-[342px] lg:h-[382px] w-[300px] md:w-[334px] lg:w-[319px]"
                   key={item.id}
-                  
                 >
-                  <h4 className="uppercase text-white text-[24px] md:text-[28px] leading-[113%] ">
+                  <h4 className="uppercase text-[#EEECDE] text-[24px] md:text-[28px] leading-[113%] ">
                     {item.title}
                   </h4>
                   <span className="min-w-[24px] min-h-[24px] rounded-[8px] flex items-center justify-center m-auto bg-[rgba(255,255,255,.1)] p-2.5">

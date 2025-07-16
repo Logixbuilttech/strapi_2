@@ -20,19 +20,21 @@ export default async function whatwedo() {
 
   const heroData = whatWeDoData.Hero;
   const blocks = whatWeDoData.WhatWeDo || [];
-  console.log("🚀 ~ blocks:", blocks)
+  console.log("🚀 ~ blocks:", blocks);
   return (
     <>
       {/* <HomeHero /> */}
-      <WhatWeDoHero />
+      <div className="btmSpace">
+        <WhatWeDoHero />
+      </div>
       {blocks.map((b) => {
         switch (b.__component) {
-          case "layout.content-block":
-            return (
-              <>
-                {/* <ServicesBlock key={b.id} data={b} /> */}
-              </>
-            );
+          // case "layout.content-block":
+          //   return (
+          //     <>
+          //       <ServicesBlock key={b.id} data={b} />
+          //     </>
+          //   );
           case "layout.explore-capabilities":
             return <ServiceOfferings key={b.id} data={b} />;
           case "layout.feature-item":
@@ -47,4 +49,4 @@ export default async function whatwedo() {
       })}
     </>
   );
-};
+}

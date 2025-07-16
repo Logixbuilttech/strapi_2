@@ -215,6 +215,52 @@ textarea {
 
 .btmSpace h2 {
   padding-bottom: 116px;
+<<<<<<< HEAD
+=======
+}
+
+@media (max-width: 1279px) {
+  .btmSpace h2 {
+    padding-bottom: 102px;
+  }
+}
+@media (max-width: 1024px) {
+  .btmSpace h2 {
+    padding-bottom: 92px;
+  }
+}
+
+@media (max-width: 767px) {
+  .btmSpace h2 {
+    padding-bottom: 84px;
+  }
+}
+
+@media (max-width: 767px) {
+  .headerBox {
+    height: 52px;
+  }
+  .mobileIcon,
+  .NavIcon {
+    height: 44px;
+    width: 44px;
+  }
+  .logo img {
+    height: 42px;
+    width: auto;
+  }
+  .headerBox {
+    border-radius: 24px;
+  }
+  .menu-open .headerBox {
+    height: 396px;
+  }
+  .HambergerMenu {
+    padding: 40px 10px;
+    border-radius: 12px 12px 24px 24px;
+    margin-top: 10px;
+  }
+>>>>>>> 8a111a26cca7bed50dead92cda46c39b0548d551
 }
 
 /* Highlighted text for HeroText */
@@ -254,6 +300,7 @@ a.toc-active {
 .owl-carousel:not(.owl-loaded) {
   visibility: hidden;
 }
+<<<<<<< HEAD
 
 /*** Media Started ***/
 
@@ -305,3 +352,5 @@ a.toc-active {
     background-size: cover;
   }
 }
+=======
+>>>>>>> 8a111a26cca7bed50dead92cda46c39b0548d551
