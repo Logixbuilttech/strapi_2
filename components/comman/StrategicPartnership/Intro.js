@@ -2,7 +2,8 @@ import BackgroundBlock from "../BackgroundBlock";
 import Container from "@/components/comman/Container";
 import SectionBlock from "../SectionBlock";
 
-const Intro = () => {
+const Intro = ({ data }) => {
+  console.log("🚀 ~ Intro ~ data:", data)
   return (
     <BackgroundBlock variant="lightBG">
       <Container>

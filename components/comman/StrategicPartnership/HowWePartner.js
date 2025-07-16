@@ -1,23 +1,35 @@
+import React from "react";
 import BackgroundBlock from "../BackgroundBlock";
 import Container from "@/components/comman/Container";
+import { parseStrapiRichText } from "@/lib/parseStrapiRichText";
 
-const HowWePartner = () => {
+function renderRichText(parts) {
+  if (!Array.isArray(parts)) {
+    if (typeof parts === "string") return parts;
+    return null;
+  }
+  return parts.map((part, idx) => {
+    if (part.br) return <br key={idx} />;
+    if (part.span) return <span className="highlight" key={idx}>{part.text}</span>;
+    return <React.Fragment key={idx}>{part.text}</React.Fragment>;
+  });
+}
+
+const HowWePartner = ({ data }) => {
+  if (!data) return null;
+
   return (
     <BackgroundBlock>
-      {/* <Container>
+      <Container>
         <div className="text-center grid gap-4">
           <span className="text-[18px] font-semibold text-[#EEECDE] tracking-[.02em] leading-[100%] uppercase !font-Archivo">
-            How We Partner
+            {data.ShortText}
           </span>
           <h2 className="font-Anton text-[66px] font-normal leading-[113%] uppercase text-[#EEECDE]">
-            <span className="bg-[#E9F5AC] rounded-[3px] inline-block align-top leading-[100%]  px-1 text-[#16363D]">
-              We believe
-            </span>{" "}
-            that strong partnerships are <br /> built on shared goals, clear
-            communication, <br /> and mutual growth.
+            {renderRichText(parseStrapiRichText(data.Title))}
           </h2>
         </div>
-      </Container> */}
+      </Container>
     </BackgroundBlock>
   );
 };

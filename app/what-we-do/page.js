@@ -29,12 +29,6 @@ export default async function whatwedo() {
       </div>
       {blocks.map((b) => {
         switch (b.__component) {
-          // case "layout.content-block":
-          //   return (
-          //     <>
-          //       <ServicesBlock key={b.id} data={b} />
-          //     </>
-          //   );
           case "layout.explore-capabilities":
             return <ServiceOfferings key={b.id} data={b} />;
           case "layout.feature-item":
