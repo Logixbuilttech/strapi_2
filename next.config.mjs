@@ -7,6 +7,7 @@ export default {
   typescript: {
     ignoreBuildErrors: true,
   },
+  reactStrictMode: false,
   images: {
     domains: ["localhost", "e83ef2399875.ngrok-free.app"],
   },

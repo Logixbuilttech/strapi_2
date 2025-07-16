@@ -192,12 +192,12 @@ textarea {
 }
 
 .contactForm input {
-  height: 66px;
+  /* height: 66px; */
   background: rgba(255, 255, 255, 0.07);
   color: #eeecde;
 }
 .contactForm textarea {
-  height: 158px;
+  /* height: 158px; */
   background: rgba(255, 255, 255, 0.07);
   color: #eeecde;
 }
@@ -213,30 +213,8 @@ textarea {
   color: #eeecde;
 }
 
-@media (max-width: 767px) {
-  .headerBox {
-    height: 52px;
-  }
-  .mobileIcon,
-  .NavIcon {
-    height: 44px;
-    width: 44px;
-  }
-  .logo img {
-    height: 42px;
-    width: auto;
-  }
-  .headerBox {
-    border-radius: 24px;
-  }
-  .menu-open .headerBox {
-    height: 396px;
-  }
-  .HambergerMenu {
-    padding: 40px 10px;
-    border-radius: 12px 12px 24px 24px;
-    margin-top: 10px;
-  }
+.btmSpace h2 {
+  padding-bottom: 116px;
 }
 
 /* Highlighted text for HeroText */
@@ -266,7 +244,8 @@ a.toc-active {
 .owl-stage {
   display: flex !important;
 }
-.owl-nav, .owl-dots {
+.owl-nav,
+.owl-dots {
   display: none !important;
 }
 .owl-carousel {
@@ -274,4 +253,55 @@ a.toc-active {
 }
 .owl-carousel:not(.owl-loaded) {
   visibility: hidden;
+}
+
+/*** Media Started ***/
+
+@media (max-width: 1279px) {
+  .btmSpace h2 {
+    padding-bottom: 102px;
+  }
+}
+@media (max-width: 1024px) {
+  .btmSpace h2 {
+    padding-bottom: 92px;
+  }
+}
+
+@media (max-width: 767px) {
+  .btmSpace h2 {
+    padding-bottom: 84px;
+  }
+}
+
+@media (max-width: 767px) {
+  .headerBox {
+    height: 52px;
+  }
+  .mobileIcon,
+  .NavIcon {
+    height: 44px;
+    width: 44px;
+  }
+  .logo img {
+    height: 42px;
+    width: auto;
+  }
+  .headerBox {
+    border-radius: 24px;
+  }
+  .menu-open .headerBox {
+    height: 396px;
+  }
+  .HambergerMenu {
+    padding: 40px 10px;
+    border-radius: 12px 12px 24px 24px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 639px) {
+  .headBG:before {
+    background-size: cover;
+  }
 }

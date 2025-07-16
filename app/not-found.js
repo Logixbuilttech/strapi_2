@@ -5,7 +5,7 @@ const NotFound = () => {
   return (
     <>
       <div
-        className="md:ml-[90px] xl:ml-[110px] relative animated-text [&>h4]:flex [&>h4]:justify-center [&>h4]:font-Anton [&>h4]:leading-[.95] md:[&>h4]:leading-[.86] [&>h4]:tracking-[.06em] 
+        className="md:pl-[90px] xl:pl-[110px] relative animated-text [&>h4]:flex [&>h4]:justify-center [&>h4]:font-Anton [&>h4]:leading-[.95] md:[&>h4]:leading-[.86] [&>h4]:tracking-[.06em] 
         [&>h4]:uppercase [&>h4]:whitespace-nowrap [&>h4]:font-normal [&>h4]:text-[81px] md:[&>h4]:text-[148px] lg:[&>h4]:text-[200px] xl:[&>h4]:text-[290px]
         [&>h4>span]:opacity-[.2] [&>h4>span]:filter [&>h4>span]:blur-[7.445px]
         overflow-hidden

@@ -63,8 +63,8 @@ const WhyChooseUs = ({ data }) => {
           className="owl-theme"
         >
           {Array.isArray(data.Item) &&
-            data.Item.map((item) => (
-              <div className="item">
+            data.Item.map((item, i) => (
+              <div className="item" key={i}>
                 <div
                   className=" bg-[rgba(255,255,255,.07)] rounded-[16px] p-6 flex flex-col gap-2 justify-between text-center items-center h-[342px] lg:h-[382px] w-[300px] md:w-[334px] lg:w-[319px]"
                   key={item.id}

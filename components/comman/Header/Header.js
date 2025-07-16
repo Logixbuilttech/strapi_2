@@ -117,6 +117,7 @@ const Header = ({ HeaderData }) => {
                 <Link
                   key={item.id}
                   href={item.href}
+                  onClick={() => setMenuOpen(false)}
                   onMouseEnter={() => setHoveredId(item.id)}
                   onMouseLeave={() => setHoveredId(null)}
                   className={`${textColor} opacity-0 slide-up`}

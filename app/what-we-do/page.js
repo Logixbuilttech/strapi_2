@@ -30,7 +30,7 @@ export default async function whatwedo() {
           case "layout.content-block":
             return (
               <>
-                <ServicesBlock key={b.id} data={b} />
+                {/* <ServicesBlock key={b.id} data={b} /> */}
               </>
             );
           case "layout.explore-capabilities":

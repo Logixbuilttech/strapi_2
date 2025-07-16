@@ -35,16 +35,16 @@ export async function POST(request) {
       revalidatePath('/');
       break;
     case 'who-we-are':
-      revalidatePath('/whoweare');
+      revalidatePath('/who-we-are');
       break;
     case 'article':
-      revalidatePath('/thinkforward');
+      revalidatePath('/think-forward');
       break;
     case 'gallery-category':
-      revalidatePath('/thinkforward');
+      revalidatePath('/think-forward');
       break;
     case 'privacy-policy':
-      revalidatePath('/privacypolicy');
+      revalidatePath('/privacy-policy');
       break;
     case 'post':
       if (entry && entry.slug) {

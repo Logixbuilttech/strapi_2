@@ -1,12 +1,13 @@
 import React from "react";
 import Button from "@/components/comman/Button";
+import Link from "next/link";
 
 const HeroText = ({
   heroParts = [],
   smallText,
   showButton = false,
   buttonText = "Discover More",
-  onButtonClick,
+  buttonHref,
   className = "",
   smallTextIsHtml = true,
 }) => {
@@ -61,11 +62,13 @@ const HeroText = ({
             {renderSmallText()}
             {showButton && (
               <div className="pt-9 md:pt-12 lg:pt-[52px]">
-                <Button
-                  label={buttonText}
-                  color="light"
-                  onClick={onButtonClick}
-                />
+                {buttonHref ? (
+                  <Link href={buttonHref} passHref>
+                      <Button label={buttonText} color="light" />
+                  </Link>
+                ) : (
+                  <Button label={buttonText} color="light" />
+                )}
               </div>
             )}
           </div>

@@ -43,7 +43,7 @@ const OurValues = ({ data }) => {
                 }`}
               >
                 <div className="bg-[#16363D] rounded-[16px] p-6 flex flex-col justify-between gap-[46px] md:gap-2 h-auto md:h-[342px] lg:h-[388px] text-center ">
-                  <h3 className="text-[24px] md:text-[28px] text-[#EEECDE] leading-[113%]">
+                  <h3 className="text-[24px] md:text-[28px] text-[#EEECDE] leading-[113%] uppercase">
                     {renderRichText(parseStrapiRichText(item.Title))}
                   </h3>
                   <span className="w-[64px] h-[64px] bg-[rgba(255,255,255,.1)] rounded-[8px] flex items-center justify-center m-auto">

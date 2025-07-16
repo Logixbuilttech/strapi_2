@@ -9,6 +9,7 @@ const HomeHero = ({ data, CardWithLogoData }) => {
   const smallText = data.smallText;
   const buttonText = data.Button?.text || "Learn about us";
   const buttonHref = data.Button?.href || "#";
+  console.log("🚀 ~ HomeHero ~ buttonHref:", buttonHref)
 
   return (
     <section className="headBG">
@@ -19,7 +20,7 @@ const HomeHero = ({ data, CardWithLogoData }) => {
           smallText={smallText}
           showButton={!!data.Button}
           buttonText={buttonText}
-          onButtonClick={() => (window.location.href = buttonHref)}
+          buttonHref={buttonHref}
           className="pb-[84px] md:pb-[92px] lg:pb-[116px]"
         />
       </div>

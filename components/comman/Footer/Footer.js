@@ -44,9 +44,8 @@ const Footer = ({ FooterData }) => {
   return (
     <>
       <footer
-        className={`z-10 relative bg-[#EEECDE] py-[64px_30px] md:py-[72px_40px] lg:py-[63px] rounded-[10px_10px_0_0] mt-[-20px] border-t-[2px] ${
-          showTopBorder ? "border-[rgba(22,54,61,.2)]" : "border-[#EEECDE]"
-        }`}
+        className={`z-10 relative bg-[#EEECDE] py-[64px_30px] md:py-[72px_40px] lg:py-[63px] rounded-[10px_10px_0_0] mt-[-20px] border-t-[2px] ${showTopBorder ? "border-[rgba(22,54,61,.2)]" : "border-[#EEECDE]"
+          }`}
       >
         <Container>
           <div className="grid lg:flex gap-12 sm:gap-10 lg:gap-[50px] ">
@@ -81,9 +80,12 @@ const Footer = ({ FooterData }) => {
             </div>
             <div className="gap-[30px] sm:gap-[70px] lg:gap-0 lg:w-1/2 flex sm:justify-between flex-wrap lg:ml-auto">
               <div className="lg:w-1/2 lg:hidden order-[3] sm:order-none w-full sm:w-fit">
-                <h2 className="text-[#16363D] text-[38px] sm:text-[44px] font-Anton sm:leading-[113%] leading-[100%] uppercase">
-                  {brandName}
-                </h2>
+                <Link href="/" >
+                  <h2 className="text-[#16363D] text-[38px] sm:text-[44px] font-Anton sm:leading-[113%] leading-[100%] uppercase inline-block">
+                    {brandName}
+                  </h2>
+                
+                </Link>
               </div>
               <div className="ml-[57px] sm:ml-auto lg:m-0 flex flex-col justify-between gap-5 sm:gap-3 order-[2] sm:order-none">
                 <div className="flex gap-3 flex-col">
@@ -139,9 +141,11 @@ const Footer = ({ FooterData }) => {
           </div>
           <div className="flex gap-[60px] items-end mt-[30px] sm:mt-10 lg:-mt-4 w-full">
             <div className="w-full lg:min-w-[460px] lg:w-[601px] hidden lg:block">
-              <h2 className="text-[#16363D] text-[66px] font-Anton leading-[100%] uppercase">
-                {brandName}
-              </h2>
+              <Link href="/" >
+                <h2 className="text-[#16363D] text-[66px] font-Anton leading-[100%] uppercase inline-block">
+                  {brandName}
+                </h2>
+              </Link>
             </div>
             <div className="w-full lg:w-1/2 flex justify-between items-center flex-row-reverse lg:flex-row">
               <p className="text-[14px] text-[rgba(22,54,61,.4)] leading-[120%] font-medium tracking-[-0.02em]">

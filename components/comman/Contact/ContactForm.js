@@ -8,12 +8,12 @@ const ContactForm = () => {
   return (
     <section className="pb-[84px]">
       <Container>
-        <div className="flex gap-3">
-          <div className="w-[362px]">
-            <ul className="grid gap-3">
+        <div className="flex gap-3 flex-col-reverse lg:flex-row">
+          <div className="w-full lg:w-[362px]">
+            <ul className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-1">
               <li className="group ">
-                <div className="transition p-4 rounded-[16px] gap-[46px] bg-[rgba(255,255,255,0.07)] flex flex-col justify-between text-center text-[#E9F5AC] group-hover:bg-[#E9F5AC] group-hover:text-[#16363D]">
-                  <label className="text-[16px] leading-[120%] -tracking-[.03em] font-semibold font-Archivo ">
+                <div className="h-full lg:h-auto transition p-4 rounded-[16px] gap-[30px] lg:gap-[46px] bg-[#E9F5AC] lg:bg-[rgba(255,255,255,0.07)] flex flex-col justify-between text-center text-[#16363D] lg:text-[#E9F5AC] group-hover:bg-[#E9F5AC] group-hover:text-[#16363D]">
+                  <label className="text-[14px] md:text-[16px] leading-[120%] -tracking-[.03em] font-semibold font-Archivo ">
                     Phone:
                   </label>
                   <div className="grid gap-3 justify-center">
@@ -31,15 +31,15 @@ const ContactForm = () => {
                         />
                       </svg>
                     </i>
-                    <span className="font-Archivo font-medium text-[22px] leading-[120%] -tracking-[.03em]  ">
+                    <span className="font-Archivo font-medium text-[18px] lg:text-[22px] leading-[120%] -tracking-[.03em]  ">
                       767-265-9189
                     </span>
                   </div>
                 </div>
               </li>
               <li className="group ">
-                <div className="transition p-4 rounded-[16px] gap-[46px] bg-[rgba(255,255,255,0.07)] flex flex-col justify-between text-center text-[#E9F5AC] group-hover:bg-[#E9F5AC] group-hover:text-[#16363D]">
-                  <label className="text-[16px] leading-[120%] -tracking-[.03em] font-semibold font-Archivo ">
+                <div className="h-full lg:h-auto transition p-4 rounded-[16px] gap-[30px] lg:gap-[46px] bg-[#E9F5AC] lg:bg-[rgba(255,255,255,0.07)] flex flex-col justify-between text-center text-[#16363D] lg:text-[#E9F5AC] group-hover:bg-[#E9F5AC] group-hover:text-[#16363D]">
+                  <label className="text-[14px] md:text-[16px] leading-[120%] -tracking-[.03em] font-semibold font-Archivo ">
                     WhatsApp:
                   </label>
                   <div className="grid gap-3 justify-center">
@@ -57,15 +57,15 @@ const ContactForm = () => {
                         />
                       </svg>
                     </i>
-                    <span className="font-Archivo font-medium text-[22px] leading-[120%] -tracking-[.03em] ">
+                    <span className="font-Archivo font-medium text-[18px] lg:text-[22px] leading-[120%] -tracking-[.03em] ">
                       767-265-9189
                     </span>
                   </div>
                 </div>
               </li>
               <li className="group">
-                <div className="transition p-4 rounded-[16px] gap-[46px] bg-[rgba(255,255,255,0.07)] flex flex-col justify-between text-center text-[#E9F5AC] group-hover:bg-[#E9F5AC] group-hover:text-[#16363D]">
-                  <label className="text-[16px] leading-[120%] -tracking-[.03em] font-semibold font-Archivo ">
+                <div className="h-full lg:h-auto transition p-4 rounded-[16px] gap-[30px] lg:gap-[46px] bg-[#E9F5AC] lg:bg-[rgba(255,255,255,0.07)] flex flex-col justify-between text-center text-[#16363D] lg:text-[#E9F5AC] group-hover:bg-[#E9F5AC] group-hover:text-[#16363D]">
+                  <label className="text-[14px] md:text-[16px] leading-[120%] -tracking-[.03em] font-semibold font-Archivo ">
                     Email:
                   </label>
                   <div className="grid gap-3 justify-center">
@@ -89,7 +89,7 @@ const ContactForm = () => {
                     </i>
                     <Link
                       href="mailto:info@renewedge-solutions.com"
-                      className="font-Archivo font-medium text-[22px] leading-[120%] -tracking-[.03em] "
+                      className="font-Archivo font-medium text-[18px] lg:text-[22px] leading-[120%] -tracking-[.03em] "
                     >
                       info@renewedge-solutions.com
                     </Link>
@@ -97,8 +97,8 @@ const ContactForm = () => {
                 </div>
               </li>
               <li className="group">
-                <div className="transition p-4 rounded-[16px] gap-[46px] bg-[rgba(255,255,255,0.07)] flex flex-col justify-between text-center text-[#E9F5AC] group-hover:bg-[#E9F5AC] group-hover:text-[#16363D]">
-                  <label className="text-[16px] leading-[120%] -tracking-[.03em] font-semibold font-Archivo ">
+                <div className="h-full lg:h-auto transition p-4 rounded-[16px] gap-[30px] lg:gap-[46px] bg-[#E9F5AC] lg:bg-[rgba(255,255,255,0.07)] flex flex-col justify-between text-center text-[#16363D] lg:text-[#E9F5AC] group-hover:bg-[#E9F5AC] group-hover:text-[#16363D]">
+                  <label className="text-[14px] md:text-[16px] leading-[120%] -tracking-[.03em] font-semibold font-Archivo ">
                     Facebook
                   </label>
                   <div className="grid gap-3 justify-center">
@@ -121,8 +121,8 @@ const ContactForm = () => {
               </li>
             </ul>
           </div>
-          <div className="w-[calc(100%-374px)] p-10 rounded-[16px] bg-[rgba(255,255,255,0.07)]">
-            <h2 className="text-[#EEECDE] text-[48px] leading-[112%] uppercase mb-[30px] block text-center">
+          <div className="w-full lg:w-[calc(100%-374px)] p-6 lg:p-10 rounded-[16px] bg-[rgba(255,255,255,0.07)]">
+            <h2 className="text-[#EEECDE] text-[28px] lg:text-[48px] leading-[112%] uppercase mb-[30px] block text-center">
               Fill the form
             </h2>
             <form>
@@ -132,8 +132,8 @@ const ContactForm = () => {
                 <TextInput placeholder="xxx xx xx" />
                 <Textarea placeholder="How can we help?" />
                 <button
-                  className="bg-[#E9F5AC] border-1 border-[#E9F5AC] text-[18px] text-[#16363D] font-semibold 
-              tracking-[.02em] uppercase leading-[100%] block rounded-full w-full p-5 mt-[18px] font-Archivo"
+                  className="bg-[#E9F5AC] border-1 border-[#E9F5AC] text-[14px] lg:text-[18px] text-[#16363D] font-semibold tracking-[.02em] 
+                  uppercase leading-[100%] block rounded-full w-full p-[15px] lg:p-5 mt-[18px] font-Archivo h-[44px] lg:h-[60px]"
                 >
                   SEND MESSAGE
                 </button>
