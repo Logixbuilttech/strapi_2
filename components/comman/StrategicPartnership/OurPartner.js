@@ -23,7 +23,7 @@ function renderRichText(parts) {
 }
 
 const OurPartner = ({ data }) => {
-  console.log("🚀 ~ OurPartner ~ data:", JSON.stringify(data))
+  console.log("🚀 ~ OurPartner ~ data:", JSON.stringify(data));
   // Helper to get full image URL if needed
   const getImageUrl = (img) => {
     if (!img?.url) return "";
@@ -39,18 +39,17 @@ const OurPartner = ({ data }) => {
   return (
     <BackgroundBlock variant="lightBG">
       <Container>
-        <div className="flex pb-[64px]">
-          <span className="w-1/2 text-[#16363D] text-[18px] tracking-[.02em] leading-[100%] font-semibold !font-Archivo">
+        <div className="flex pb-12 lg:pb-[64px]">
+          <span className="w-[85px] md:w-[176px] lg:w-1/2 break-words  text-[#16363D] text-[10px] md:text-[14px] lg:text-[18px] tracking-[.02em] leading-[100%] font-semibold !font-Archivo uppercase">
             {data?.leftText}
           </span>
-          <h2 className="w-1/2 text-[#16363D] text-[66px] uppercase leading-[113%]">
+          <h2 className="w-[calc(100%-85px)] md:w-[calc(100%-176px)] lg:w-1/2 text-[#16363D] text-[30px] md:text-[44px] lg:text-[56px] xl:text-[66px] uppercase leading-[113%]">
             {renderRichText(rightHeading)}
           </h2>
         </div>
 
-        <div className="flex flex-col gap-8">
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="flex flex-col gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {data?.Card?.slice(0, 3).map((partner) => (
               <div
                 key={partner.id}
@@ -60,7 +59,9 @@ const OurPartner = ({ data }) => {
                   <Image
                     width={partner.Image?.width || 34}
                     height={partner.Image?.height || 34}
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${getImageUrl(partner.Image)}`}
+                    src={`${
+                      process.env.NEXT_PUBLIC_STRAPI_API_URL
+                    }${getImageUrl(partner.Image)}`}
                     alt={partner.Image?.alternativeText || ""}
                   />
                 </span>
@@ -71,22 +72,23 @@ const OurPartner = ({ data }) => {
             ))}
           </div>
 
-   
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {data?.Card?.slice(3).map((partner) => (
               <div
                 key={partner.id}
-                className="flex flex-col items-center text-center bg-[#16363D] rounded-[16px] h-[260px] justify-between p-6"
+                className="flex flex-col items-center text-center bg-[#16363D] rounded-[16px] h-[198px] md:h-[240px] lg:h-[260px] justify-between p-6"
               >
                 <span className="bg-[rgba(255,255,255,.1)] rounded-[8px] w-[64px] h-[64px] mx-auto flex items-center justify-center">
                   <Image
                     width={partner.Image?.width || 34}
                     height={partner.Image?.height || 34}
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${getImageUrl(partner.Image)}`}
+                    src={`${
+                      process.env.NEXT_PUBLIC_STRAPI_API_URL
+                    }${getImageUrl(partner.Image)}`}
                     alt={partner.Image?.alternativeText || ""}
                   />
                 </span>
-                <h3 className="text-[28px] text-[#EEECDE] leading-[113%] uppercase">
+                <h3 className="text-[24px] md:text-[28px] text-[#EEECDE] leading-[113%] uppercase">
                   {renderRichText(parseStrapiRichText(partner.Title))}
                 </h3>
               </div>

@@ -54,7 +54,7 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
 
   // Single-select for industry focus
   const handleIndustryFocus = (id) => {
-    console.log('handle industry focus', id)
+    console.log("handle industry focus", id);
     setForm((prev) => ({ ...prev, industry_focus_tab: id }));
   };
 
@@ -88,11 +88,17 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
       formData.append("data[reasonForPartnership]", form.reasonForPartnership);
       // For Strapi v5 REST API, send relation IDs directly (no [connect])
       if (form.industry_focus_tab) {
-        formData.append("data[industry_focus_tab]", String(form.industry_focus_tab - 1));
+        formData.append(
+          "data[industry_focus_tab]",
+          String(form.industry_focus_tab - 1)
+        );
         // formData.append("data[industry_focus_tab]", Number(form.industry_focus_tab)); // Uncomment if needed
       }
       if (form.support_needed_tab) {
-        formData.append("data[support_needed_tab]", String(form.support_needed_tab + 1));
+        formData.append(
+          "data[support_needed_tab]",
+          String(form.support_needed_tab + 1)
+        );
         // formData.append("data[support_needed_tab]", Number(form.support_needed_tab)); // Uncomment if needed
       }
       if (form.attachment) {
@@ -100,7 +106,7 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
       }
       // Debug: log FormData entries
       for (let pair of formData.entries()) {
-        console.log(pair[0]+ ': ' + pair[1]);
+        console.log(pair[0] + ": " + pair[1]);
       }
       const res = await fetch(
         "http://localhost:1337/api/partnership-applications",
@@ -133,23 +139,28 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
   return (
     <BackgroundBlock>
       <Container>
-        <div className="flex pb-[64px]">
-          <span className="w-1/2 text-[#EEECDE] text-[18px] tracking-[.02em] leading-[100%] font-semibold !font-Archivo uppercase">
+        <div className="flex pb-12 lg:pb-[64px]">
+          <span
+            className="w-[90px] md:w-[176px] lg:w-1/2  text-[#EEECDE] break-words text-[10px] md:text-[14px] lg:text-[18px] tracking-[.02em] leading-[100%] font-semibold 
+          !font-Archivo uppercase"
+          >
             Let’s start with your vision
           </span>
-          <h2 className="w-1/2 text-[#EEECDE] text-[66px] uppercase leading-[113%]">
+          <h2 className="w-[calc(100%-90px)] md:w-[calc(100%-176px)] lg:w-1/2 text-[#EEECDE] text-[30px] md:text-[44px] lg:text-[56px] xl:text-[66px] uppercase leading-[113%]">
             Ready to Build the <br /> Future Together?
           </h2>
         </div>
-        <div className="bg-[#EEECDE] rounded-[16px] p-10">
-          <h2 className="text-[48px] text-[#16363D] leading-[113%] uppercase mb-[30px] block text-center">
+        <div className="bg-[#EEECDE] rounded-[16px] lg:p-10 p-6">
+          <h2 className="text-[24px] md:text-[28px] lg:text-[48px] text-[#16363D] leading-[113%] uppercase mb-5 lg:mb-[30px] block text-center">
             Strategic Partnership Application
           </h2>
           <form onSubmit={handleSubmit}>
             {validationError && (
-              <div className="text-red-600 mb-2 text-center">{validationError}</div>
+              <div className="text-red-600 mb-2 text-center">
+                {validationError}
+              </div>
             )}
-            <div className="grid gap-3 grid-cols-2 pb-3">
+            <div className="grid gap-3 grid-cols-1 lg:grid-cols-2 pb-3">
               <TextInput
                 placeholder="Full Name *"
                 name="fullName"
@@ -179,7 +190,7 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
                 required
               />
             </div>
-            <div className="pb-[30px]">
+            <div className="pb-5 lg:pb-[30px]">
               <TextInput
                 placeholder="Website or Portfolio Link (optional)"
                 name="website"
@@ -187,8 +198,8 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
                 onChange={handleChange}
               />
             </div>
-            <div className="grid gap-6 mb-[30px]">
-              <h4 className="text-[#16363D] font-medium text-[22px] leading-[120%] tracking-[-.03em] !font-Archivo">
+            <div className="grid gap-6 mb-5 md:mb-6 lg:mb-[30px]">
+              <h4 className="text-[#16363D] font-medium text-[14px] lg:text-[22px] leading-[120%] tracking-[-.03em] !font-Archivo">
                 Industry Focus
               </h4>
               <div className="flex gap-3 flex-wrap">
@@ -204,7 +215,7 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
                 ))}
               </div>
             </div>
-            <div className="mb-[30px]">
+            <div className="mb-5 md:mb-6 lg:mb-[30px]">
               <Textarea
                 placeholder="Describe Your Project or Business *"
                 name="projectDescription"
@@ -213,8 +224,8 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
                 required
               />
             </div>
-            <div className="grid gap-6 mb-[30px]">
-              <h4 className="text-[#16363D] font-medium text-[22px] leading-[120%] tracking-[-.03em] !font-Archivo">
+            <div className="grid gap-6 mb-5 md:mb-6 lg:mb-[30px]">
+              <h4 className="text-[#16363D] font-medium text-[14px] lg:text-[22px] leading-[120%] tracking-[-.03em] !font-Archivo">
                 What Support Are You Seeking?
               </h4>
               <div className="flex gap-3 flex-wrap">
@@ -230,7 +241,7 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
                 ))}
               </div>
             </div>
-            <div className="mb-[30px]">
+            <div className="mb-5 md:mb-6 lg:mb-[30px]">
               <Textarea
                 placeholder="Why Do You Want to Partner with RenewEdge-Solutions? *"
                 name="reasonForPartnership"
@@ -239,19 +250,30 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
                 required
               />
             </div>
-            <div className="mb-[30px]">
-              <input
-                type="file"
-                name="attachment"
-                accept="image/*,application/pdf"
-                onChange={handleChange}
-              />
+            <div className="mb-5 md:mb-6 lg:mb-[30px] grid gap-6">
+              <label className="text-[#16363D] font-Archivo font-medium text-[14px] lg:text-[22px] leading-[120%] -tracking-[.03em]">
+                Upload Pitch Deck or Additional Materials (optional)
+              </label>
+
+              <div className="fileInput" onChange={handleChange}>
+                <label>
+                  <span>
+                    Drag or <strong>Upload</strong> files here
+                  </span>
+                  <p>Maximum 5 attachments are allowed.</p>
+                </label>
+                <input
+                  type="file"
+                  name="attachment"
+                  accept="image/*,application/pdf"
+                />
+              </div>
             </div>
             <div className="w-full">
               <button
                 type="submit"
-                className="bg-[#16363D] border-1 border-[#16363D] text-[18px] text-[#EEECDE] font-semibold \
-              tracking-[.02em] uppercase leading-[100%] block rounded-full w-full p-5"
+                className="bg-[#16363D] border-1 border-[#16363D] text-[14px] lg:text-[18px] text-[#EEECDE] font-semibold 
+              tracking-[.02em] uppercase leading-[100%] block rounded-full w-full p-[15px] lg:p-5"
                 disabled={submitting}
               >
                 {submitting ? "Submitting..." : "Submit Your Pitch"}
@@ -273,4 +295,3 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
 };
 
 export default ApplicationForm;
-
