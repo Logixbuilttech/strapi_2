@@ -34,23 +34,19 @@ const ApplyIdea = ({ data }) => {
       block.children[0].text &&
       block.children[0].text.includes("project startup")
   );
-  const projectWords =
-    projectLineObj?.children[0]?.text.split(" ") || [
-      "project",
-      "startup",
-      "small business",
-      "big ideas",
-      "project",
-      "startup",
-    ];
+  const projectWords = projectLineObj?.children[0]?.text.split(" ") || [
+    "project",
+    "startup",
+    "small business",
+    "big ideas",
+    "project",
+    "startup",
+  ];
 
   // Get the rest of the title lines
   const titleLines = titleParts.filter(
     (part) =>
-      !(
-        typeof part.text === "string" &&
-        part.text.includes("project startup")
-      )
+      !(typeof part.text === "string" && part.text.includes("project startup"))
   );
 
   // Parse the submit pitch section
@@ -61,33 +57,32 @@ const ApplyIdea = ({ data }) => {
 
   return (
     <BackgroundBlock>
-      <div className="text-center pb-12">
-        <span className="text-[18px] tracking-[.02em] text-[#EEECDE] font-semibold font-Archivo mb-4 uppercase">
+      <div className="text-center pb-[30px] md:pb-10 lg:pb-12">
+        <span className="text-[10px] md:text-[14px] lg:text-[18px] tracking-[.02em] text-[#EEECDE] font-semibold font-Archivo mb-3 leading-[100%] uppercase block">
           {shortText}
         </span>
-        <h2 className="text-[66px] text-[#EEECDE] uppercase leading-[113%]">
+        <h2 className="text-[30px] md:text-[44px] lg:text-[56px] xl:text-[66px] text-[#EEECDE] uppercase leading-[113%]">
           {titleLines[0]?.text || "If you have"}
         </h2>
         <div
-          className="flex gap-4 [&>span]:bg-[#E9F5AC] [&>span]:text-[66px] [&>span]:text-[#16363D] [&>span]:leading-[100%] \
-        [&>span]:p-1 [&>span]:rounded-[3px] [&>span]:uppercase [&>span]:inline-block [&>span]:align-top [&>span]:font-Anton whitespace-nowrap"
+          className="flex gap-4 [&>span]:bg-[#E9F5AC] [&>span]:text-[#16363D] [&>span]:leading-[100%] justify-center
+        [&>span]:p-1 [&>span]:rounded-[3px] [&>span]:uppercase [&>span]:inline-block [&>span]:align-top [&>span]:font-Anton whitespace-nowrap
+        [&>span]:text-[30px] [&>span]:md:text-[44px] [&>span]:lg:text-[56px] [&>span]:xl:text-[66px]"
         >
           {projectWords.map((word, idx) => (
             <span key={idx}>{word}</span>
           ))}
         </div>
-        <h2 className="text-[66px] text-[#EEECDE] uppercase leading-[113%]">
-          {titleLines
-            .slice(1)
-            .map((part, idx) => (
-              <React.Fragment key={idx}>
-                {part.text}
-                {part.br && <br />}
-              </React.Fragment>
-            ))}
+        <h2 className="text-[30px] md:text-[44px] lg:text-[56px] xl:text-[66px] text-[#EEECDE] uppercase leading-[113%]">
+          {titleLines.slice(1).map((part, idx) => (
+            <React.Fragment key={idx}>
+              {part.text}
+              {part.br && <br />}
+            </React.Fragment>
+          ))}
         </h2>
       </div>
-      <div className="pt-12 flex flex-col items-center gap-4 border-t-[1px] border-[rgba(238,236,222,.15)] text-center">
+      <div className="pt-12 flex flex-col items-center gap-4 border-t-[1px] border-[rgba(238,236,222,.15)] text-center px-2">
         {submitPitchParts
           .filter((part) => !part.span)
           .map((part, idx) => (
@@ -99,7 +94,7 @@ const ApplyIdea = ({ data }) => {
             </p>
           ))}
         {lastPitch && (
-          <p className="bg-[#E9F5AC] rounded-[4px] p-1 text-[22px] leading-[120%] text-[#16363D] font-Archivo tracking-[.02em] font-medium inline-block align-top">
+          <p className="bg-[#E9F5AC] rounded-[4px] p-0.5 text-[14px] md:text-[18px] lg:text-[22px] leading-[120%] text-[#16363D] font-Archivo tracking-[.02em] font-medium inline-block align-top">
             {lastPitch.text}
           </p>
         )}

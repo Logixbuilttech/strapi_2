@@ -10,7 +10,12 @@ function renderRichText(parts) {
   }
   return parts.map((part, idx) => {
     if (part.br) return <br key={idx} />;
-    if (part.span) return <span className="highlight" key={idx}>{part.text}</span>;
+    if (part.span)
+      return (
+        <span className="highlight" key={idx}>
+          {part.text}
+        </span>
+      );
     return <React.Fragment key={idx}>{part.text}</React.Fragment>;
   });
 }
@@ -21,11 +26,11 @@ const HowWePartner = ({ data }) => {
   return (
     <BackgroundBlock>
       <Container>
-        <div className="text-center grid gap-4">
-          <span className="text-[18px] font-semibold text-[#EEECDE] tracking-[.02em] leading-[100%] uppercase !font-Archivo">
+        <div className="text-center grid gap-3 md:gap-4">
+          <span className="text-[10px] md:text-[14px] lg:text-[18px] font-semibold text-[#EEECDE] tracking-[.02em] leading-[100%] uppercase !font-Archivo">
             {data.ShortText}
           </span>
-          <h2 className="font-Anton text-[66px] font-normal leading-[113%] uppercase text-[#EEECDE]">
+          <h2 className="font-Anton text-[30px] md:text-[44px] lg:text-[56px] xl:text-[66px] font-normal leading-[113%] uppercase text-[#EEECDE]">
             {renderRichText(parseStrapiRichText(data.Title))}
           </h2>
         </div>

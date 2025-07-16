@@ -10,7 +10,6 @@ import StrategicPartnershipHero from "@/components/comman/StrategicPartnership/S
 import { ArticlePopulate, StrategicPopulate } from "@/lib/populateMap";
 import { fetchStrapi } from "@/lib/strapiApi";
 
-
 export const revalidate = 3600;
 export default async function StrategicPartnership() {
   const supportNeededTabs = await fetchStrapi("support-needed-tabs", {
@@ -18,14 +17,20 @@ export default async function StrategicPartnership() {
     tag: "support-needed-tab",
     revalidate,
   });
-  console.log("🚀 ~ StrategicPartnership ~ supportNeededTabs:", supportNeededTabs);
+  console.log(
+    "🚀 ~ StrategicPartnership ~ supportNeededTabs:",
+    supportNeededTabs
+  );
 
   const strategicPartnershipData = await fetchStrapi("strategic-partnership", {
     populate: StrategicPopulate.populate,
     tag: "strategic-partnership",
     revalidate,
   });
-  console.log("🚀 ~ StrategicPartnership ~ strategicPartnershipData:", strategicPartnershipData);
+  console.log(
+    "🚀 ~ StrategicPartnership ~ strategicPartnershipData:",
+    strategicPartnershipData
+  );
 
   const industryFocus = await fetchStrapi("industry-focus-tabs", {
     populate: StrategicPopulate.populate,
@@ -54,8 +59,9 @@ export default async function StrategicPartnership() {
             return (
               <div
                 key={b.id}
-                className={`bg-[#EEECDE] rounded-[16px_16px_0_0] pt-[64px] md:pt-[72px] lg:pt-[82px] xl:pt-[96px] relative z-10 -mt-5 ${b.Background && "darkBG"
-                  }`}
+                className={`bg-[#EEECDE] rounded-[16px_16px_0_0] pt-[64px] md:pt-[72px] lg:pt-[82px] xl:pt-[96px] relative z-10 -mt-5 ${
+                  b.Background && "darkBG"
+                }`}
               >
                 <ServicesBlock key={b.id} data={b} />
               </div>
@@ -72,7 +78,10 @@ export default async function StrategicPartnership() {
             return null;
         }
       })}
+      <ApplicationForm
+        industryFocusTabs={industryFocus}
+        supportNeededTabs={supportNeededTabs}
+      />
     </>
   );
-};
-
+}

@@ -10,6 +10,7 @@ const HeroText = ({
   buttonHref,
   className = "",
   smallTextIsHtml = true,
+  parentText = false,
 }) => {
   const renderSmallText = () => {
     if (!smallText) return null;
@@ -37,22 +38,30 @@ const HeroText = ({
   };
 
   return (
-    <div>
-      <h2 className="uppercase text-[38px] md:text-[56px] lg:text-[70px] xl:text-[94px] leading-[108%] text-center pt-[112px] md:pt-[152px] lg:pt-[208px] pb-[30px] md:pb-10 lg:pb-12 text-[#EEECDE]">
-        {heroParts.map((part, index) => {
-          if (part.br) {
-            return <br key={index} />;
-          } else if (part.span) {
-            return (
-              <span className="highlight" key={index}>
-                {part.text}
-              </span>
-            );
-          } else {
-            return <React.Fragment key={index}>{part.text}</React.Fragment>;
-          }
-        })}
-      </h2>
+    <>
+      <div className="uppercase text-[38px] md:text-[56px] lg:text-[70px] xl:text-[94px] leading-[108%] text-center pt-[112px] md:pt-[152px] lg:pt-[208px] pb-[30px] md:pb-10 lg:pb-12 text-[#EEECDE] grid gap-4">
+        {parentText ? (
+          <p className="text-[#EEECDE] text-[18px] font-medium -tracking-[.02em] uppercase leading-[100%]">
+            {parentText}
+          </p>
+        ) : null}
+
+        <h2>
+          {heroParts.map((part, index) => {
+            if (part.br) {
+              return <br key={index} />;
+            } else if (part.span) {
+              return (
+                <span className="highlight" key={index}>
+                  {part.text}
+                </span>
+              );
+            } else {
+              return <React.Fragment key={index}>{part.text}</React.Fragment>;
+            }
+          })}
+        </h2>
+      </div>
 
       {(smallText || showButton) && (
         <div
@@ -64,7 +73,7 @@ const HeroText = ({
               <div className="pt-9 md:pt-12 lg:pt-[52px]">
                 {buttonHref ? (
                   <Link href={buttonHref} passHref>
-                      <Button label={buttonText} color="light" />
+                    <Button label={buttonText} color="light" />
                   </Link>
                 ) : (
                   <Button label={buttonText} color="light" />
@@ -74,7 +83,7 @@ const HeroText = ({
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
