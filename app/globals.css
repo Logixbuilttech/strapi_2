@@ -215,8 +215,6 @@ textarea {
 
 .btmSpace h2 {
   padding-bottom: 116px;
-<<<<<<< HEAD
-=======
 }
 
 @media (max-width: 1279px) {
@@ -236,31 +234,8 @@ textarea {
   }
 }
 
-@media (max-width: 767px) {
-  .headerBox {
-    height: 52px;
-  }
-  .mobileIcon,
-  .NavIcon {
-    height: 44px;
-    width: 44px;
-  }
-  .logo img {
-    height: 42px;
-    width: auto;
-  }
-  .headerBox {
-    border-radius: 24px;
-  }
-  .menu-open .headerBox {
-    height: 396px;
-  }
-  .HambergerMenu {
-    padding: 40px 10px;
-    border-radius: 12px 12px 24px 24px;
-    margin-top: 10px;
-  }
->>>>>>> 8a111a26cca7bed50dead92cda46c39b0548d551
+.btmSpace h2 {
+  padding-bottom: 116px;
 }
 
 /* Highlighted text for HeroText */
@@ -291,6 +266,8 @@ a.toc-active {
   display: flex !important;
 }
 .owl-nav,
+.owl-dots,
+.owl-nav,
 .owl-dots {
   display: none !important;
 }
@@ -300,7 +277,6 @@ a.toc-active {
 .owl-carousel:not(.owl-loaded) {
   visibility: hidden;
 }
-<<<<<<< HEAD
 
 /*** Media Started ***/
 
@@ -352,5 +328,3 @@ a.toc-active {
     background-size: cover;
   }
 }
-=======
->>>>>>> 8a111a26cca7bed50dead92cda46c39b0548d551
