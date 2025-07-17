@@ -11,6 +11,7 @@
   --font-Anton: "Anton";
   --font-Archivo: "Archivo";
 }
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -29,6 +30,7 @@ ol {
   margin: 0;
   padding: 0;
 }
+
 h1,
 h2,
 h3,
@@ -37,16 +39,20 @@ h5,
 h6 {
   font-family: "Anton";
 }
+
 p {
   font-family: "Archivo";
 }
+
 textarea {
   resize: none;
 }
+
 .headBG {
   background: #16363d;
   position: relative;
 }
+
 .headBG:before {
   content: "";
   background: url(../public/images/bg.jpg) no-repeat center -1px;
@@ -69,6 +75,7 @@ textarea {
   align-items: center;
   border-radius: 100px;
 }
+
 .menu-open .mobileIcon,
 .menu-open .NavIcon {
   background: #16363d;
@@ -77,6 +84,7 @@ textarea {
 .desktopView {
   display: block;
 }
+
 .Hamberger {
   display: none;
 }
@@ -84,6 +92,7 @@ textarea {
 .menu-open .desktopView {
   display: none;
 }
+
 .menu-open .Hamberger {
   display: block;
 }
@@ -104,12 +113,14 @@ textarea {
   align-items: center;
   margin: 8px 0 0;
 }
+
 .headerBox {
   height: 68px;
   transition: ease-in-out 0.5s;
   border-radius: 34px;
   overflow: hidden;
 }
+
 .menu-open .headerBox {
   background: #eeecde;
   filter: none;
@@ -121,21 +132,27 @@ textarea {
   opacity: 0;
   transform: translateY(40px);
 }
+
 .menu-open .slide-up {
   animation: slideUp 0.15s forwards;
 }
+
 .slide-up:nth-child(1) {
   animation-delay: 0.2s;
 }
+
 .slide-up:nth-child(2) {
   animation-delay: 0.4s;
 }
+
 .slide-up:nth-child(3) {
   animation-delay: 0.6s;
 }
+
 .slide-up:nth-child(4) {
   animation-delay: 0.8s;
 }
+
 .slide-up:nth-child(5) {
   animation-delay: 1s;
 }
@@ -151,6 +168,7 @@ textarea {
   display: inline-block;
   position: relative;
 }
+
 .textShow:before {
   position: absolute;
   left: -100%;
@@ -171,8 +189,9 @@ textarea {
 .cstmCheckBox input {
   display: none;
 }
-.cstmRadio input + label,
-.cstmCheckBox input + label {
+
+.cstmRadio input+label,
+.cstmCheckBox input+label {
   position: relative;
   color: #16363d;
   font-size: 18px;
@@ -185,8 +204,9 @@ textarea {
   display: block;
   line-height: 18px;
 }
-.cstmRadio input:checked + label,
-.cstmCheckBox input:checked + label {
+
+.cstmRadio input:checked+label,
+.cstmCheckBox input:checked+label {
   background: #16363d;
   color: #eeecde;
 }
@@ -196,6 +216,7 @@ textarea {
   background: rgba(255, 255, 255, 0.07);
   color: #eeecde;
 }
+
 .contactForm textarea {
   /* height: 158px; */
   background: rgba(255, 255, 255, 0.07);
@@ -205,9 +226,11 @@ textarea {
 .darkBG {
   background: #16363d !important;
 }
+
 .darkBG .relative:before {
   background: rgba(238, 236, 222, 0.15) !important;
 }
+
 .darkBG p,
 .darkBG h3 {
   color: #eeecde;
@@ -231,8 +254,10 @@ textarea {
 html {
   scroll-behavior: smooth;
 }
+
 [id] {
-  scroll-margin-top: 120px; /* Match your sticky header height */
+  scroll-margin-top: 120px;
+  /* Match your sticky header height */
 }
 
 a.toc-active {
@@ -244,15 +269,18 @@ a.toc-active {
 .owl-stage {
   display: flex !important;
 }
+
 .owl-nav,
 .owl-dots,
 .owl-nav,
 .owl-dots {
   display: none !important;
 }
+
 .owl-carousel {
   overflow: hidden;
 }
+
 .owl-carousel:not(.owl-loaded) {
   visibility: hidden;
 }
@@ -270,9 +298,11 @@ a.toc-active {
   text-align: center;
   cursor: pointer;
 }
+
 .fileInput input {
   display: none;
 }
+
 .fileInput span {
   font-family: "Archivo";
   font-weight: 500;
@@ -281,9 +311,11 @@ a.toc-active {
   letter-spacing: -0.02em;
   color: rgba(22, 54, 61, 1);
 }
+
 .fileInput span strong {
   color: #0f947e;
 }
+
 .fileInput p {
   font-family: "Archivo";
   font-weight: 500;
@@ -293,6 +325,75 @@ a.toc-active {
   color: rgba(22, 54, 61, 0.5);
 }
 
+.custom-phone-container {
+  width: 100%;
+}
+
+.custom-phone-input {
+  width: 100% !important;
+  background: transparent !important;
+  color: #EEECDE !important;
+  border: 1px solid #C7C7B6 !important;
+  border-radius: 8px !important;
+  height: 44px !important;
+  padding: 0 16px 0 48px !important;
+  font-family: 'Archivo', sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  transition: border-color 0.2s;
+}
+
+@media (min-width: 1024px) {
+  .custom-phone-input {
+    height: 60px !important;
+    font-size: 20px !important;
+  }
+}
+
+.custom-phone-input::placeholder {
+  color: #A0A08B !important;
+  opacity: 1 !important;
+  font-family: 'Archivo', sans-serif !important;
+}
+
+.custom-phone-flag-btn {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding-left: 16px !important;
+  padding-right: 8px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.custom-phone-dropdown {
+  background: #fff !important;
+  color: #16363D !important;
+  font-family: 'Archivo', sans-serif !important;
+  font-size: 16px !important;
+}
+
+.custom-phone-input:focus {
+  border-color: #E9F5AC !important;
+  box-shadow: none !important;
+}
+
+.custom-phone-container .flag-dropdown {
+  background: transparent !important;
+  border: none !important;
+  left: 0 !important;
+  top: 0 !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
 /*** Media Started ***/
 
 @media (max-width: 1279px) {
@@ -300,15 +401,18 @@ a.toc-active {
     padding-bottom: 102px;
   }
 }
+
 @media (max-width: 1024px) {
   .btmSpace h2 {
     padding-bottom: 92px;
   }
-  .cstmRadio input + label,
-  .cstmCheckBox input + label {
+
+  .cstmRadio input+label,
+  .cstmCheckBox input+label {
     padding: 13px 16px;
     font-size: 14px;
   }
+
   .fileInput {
     height: 100px;
   }
@@ -318,24 +422,30 @@ a.toc-active {
   .btmSpace h2 {
     padding-bottom: 84px;
   }
+
   .headerBox {
     height: 52px;
   }
+
   .mobileIcon,
   .NavIcon {
     height: 44px;
     width: 44px;
   }
+
   .logo img {
     height: 42px;
     width: auto;
   }
+
   .headerBox {
     border-radius: 24px;
   }
+
   .menu-open .headerBox {
     height: 396px;
   }
+
   .HambergerMenu {
     padding: 40px 10px;
     border-radius: 12px 12px 24px 24px;
@@ -346,5 +456,11 @@ a.toc-active {
 @media (max-width: 639px) {
   .headBG:before {
     background-size: cover;
+  }
+}
+
+@media (min-width: 1024px) {
+  .custom-phone-flag-btn {
+    height: 60px !important;
   }
 }

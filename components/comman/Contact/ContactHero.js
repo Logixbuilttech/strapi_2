@@ -1,16 +1,10 @@
+import { parseStrapiRichText } from "@/lib/parseStrapiRichText";
 import HeroText from "../HeroText";
 import ContactForm from "./ContactForm";
 
-const heroParts = [
-  { text: "hey" },
-  { br: true },
-  { span: true, text: "Let's Talk" },
-];
-
-const smallText =
-  "Fill out the form and we’ll be in touch shortly or feel free to reach us through your preferred channel.";
-
-const ContactHero = () => {
+const ContactHero = ({ data }) => {
+  const heroParts = parseStrapiRichText(data.HeroText);
+  const smallText = data.ContactForm.Title
   return (
     <section className="headBG">
       {/* <div className="headBG-Bottam"></div> */}
@@ -21,9 +15,10 @@ const ContactHero = () => {
           className="pb-12 lg:pb-[64px]"
         />
       </div>
-      <ContactForm />
+      <ContactForm data={data.ContactForm.Card} />
     </section>
   );
 };
 
 export default ContactHero;
+

@@ -9,7 +9,7 @@ export default {
   },
   reactStrictMode: false,
   images: {
-    domains: ["localhost", "7277802a40a9.ngrok-free.app"],
+    domains: ["localhost", "7ae41c50ad77.ngrok-free.app"],
   },
   webpack: (config, { isServer, webpack }) => {
     // No need to import 'webpack' via `import webpack from 'webpack'`

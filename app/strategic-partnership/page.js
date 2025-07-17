@@ -28,12 +28,12 @@ export default async function StrategicPartnership() {
     revalidate,
   });
 
-  const strategicPartnershipForm = await fetchStrapi("partnership-applications", {
-    populate: StrategicPopulate.populate,
-    tag: "partnership-application",
-    revalidate,
-  });
-  console.log("🚀 ~ StrategicPartnership ~ strategicPartnershipForm:", strategicPartnershipForm)
+  // const strategicPartnershipForm = await fetchStrapi("partnership-applications", {
+  //   populate: StrategicPopulate.populate,
+  //   tag: "partnership-application",
+  //   revalidate,
+  // });
+  // console.log("🚀 ~ StrategicPartnership ~ strategicPartnershipForm:", strategicPartnershipForm)
   console.log("🚀 ~ StrategicPartnership ~ strategicPartnershipData:", strategicPartnershipData);
 
   const industryFocus = await fetchStrapi("industry-focus-tabs", {

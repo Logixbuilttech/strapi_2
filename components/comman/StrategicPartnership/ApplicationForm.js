@@ -6,7 +6,6 @@ import Container from "@/components/comman/Container";
 import TextInput from "../TextInput";
 import Textarea from "../Textarea";
 import RadioButton from "../RadioButton";
-import CheckBoxInput from "@/components/comman/CheckBoxInput";
 import { useDropzone } from "react-dropzone";
 
 // Popup component
@@ -23,7 +22,7 @@ function SuccessPopup({ show, onClose }) {
           ×
         </button>
         <div className="flex flex-col items-center gap-3">
-          <h3 className="text-[#16363D] text-[22px] font-semibold mb-1">Application Submitted!</h3>
+          <h3 className="text-[#16363D] text-[22px] font-semibold mb-1 uppercase">Application Submitted!</h3>
           <p className="text-[#16363D] text-[16px]">Thank you for your submission. We’ll review your application and get back to you soon.</p>
         </div>
       </div>
@@ -341,7 +340,7 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
               </h4>
               <div className="flex gap-3 flex-wrap">
                 {supportNeededTabs?.map((tab) => (
-                  <RadioButton
+                <RadioButton
                     key={tab.id}
                     name="supportNeeded"
                     id={`support-${tab.id}`}
