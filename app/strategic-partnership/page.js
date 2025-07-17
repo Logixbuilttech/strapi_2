@@ -27,10 +27,14 @@ export default async function StrategicPartnership() {
     tag: "strategic-partnership",
     revalidate,
   });
-  console.log(
-    "🚀 ~ StrategicPartnership ~ strategicPartnershipData:",
-    strategicPartnershipData
-  );
+
+  const strategicPartnershipForm = await fetchStrapi("partnership-applications", {
+    populate: StrategicPopulate.populate,
+    tag: "partnership-application",
+    revalidate,
+  });
+  console.log("🚀 ~ StrategicPartnership ~ strategicPartnershipForm:", strategicPartnershipForm)
+  console.log("🚀 ~ StrategicPartnership ~ strategicPartnershipData:", strategicPartnershipData);
 
   const industryFocus = await fetchStrapi("industry-focus-tabs", {
     populate: StrategicPopulate.populate,
@@ -78,10 +82,7 @@ export default async function StrategicPartnership() {
             return null;
         }
       })}
-      <ApplicationForm
-        industryFocusTabs={industryFocus}
-        supportNeededTabs={supportNeededTabs}
-      />
+           <ApplicationForm industryFocusTabs={industryFocus} supportNeededTabs={supportNeededTabs} />
     </>
   );
 }
