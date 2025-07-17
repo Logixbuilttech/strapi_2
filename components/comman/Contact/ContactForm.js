@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import 'react-phone-input-2/lib/style.css';
 import PhoneInput from 'react-phone-input-2';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 // Popup component (copied and adapted from ApplicationForm)
 function SuccessPopup({ show, onClose }) {
@@ -41,6 +42,7 @@ const ContactForm = ({ data }) => {
     Phone: "",
     HowWeCanHelp: "",
   });
+  const [phoneCountry, setPhoneCountry] = useState('us');
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
@@ -111,11 +113,17 @@ const ContactForm = ({ data }) => {
       setSubmitting(false);
       return;
     }
+    // Format phone number before sending
+    let formattedPhone = form.Phone;
+    const phoneNumber = parsePhoneNumberFromString('+' + form.Phone);
+    if (phoneNumber) {
+      formattedPhone = phoneNumber.formatInternational(); // e.g., '+1 945 102 1388'
+    }
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"}/api/contact-forms`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: form }),
+        body: JSON.stringify({ data: { ...form, Phone: formattedPhone } }),
       });
       if (!res.ok) throw new Error("Failed to submit");
       setSuccess(true);
@@ -199,8 +207,9 @@ const ContactForm = ({ data }) => {
                   <PhoneInput
                     country={'us'}
                     value={form.Phone}
-                    onChange={phone => {
+                    onChange={(phone, data) => {
                       setForm(prev => ({ ...prev, Phone: phone }));
+                      setPhoneCountry(data.countryCode || 'us');
                       setFieldErrors(prev => ({ ...prev, Phone: undefined }));
                     }}
                     inputProps={{

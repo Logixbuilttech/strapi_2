@@ -7,6 +7,9 @@ import TextInput from "../TextInput";
 import Textarea from "../Textarea";
 import RadioButton from "../RadioButton";
 import { useDropzone } from "react-dropzone";
+import 'react-phone-input-2/lib/style.css';
+import PhoneInput from 'react-phone-input-2';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 // Popup component
 function SuccessPopup({ show, onClose }) {
@@ -48,6 +51,7 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
     SupportTab: "",  // now a text field
     attachments: [],
   });
+  const [phoneCountry, setPhoneCountry] = useState('us');
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
@@ -178,11 +182,17 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
     );
 
     // Step 2: Prepare the data payload with file IDs
+    // Format phone number before sending
+    let formattedPhone = form.phone;
+    const phoneNumber = parsePhoneNumberFromString('+' + form.phone);
+    if (phoneNumber) {
+      formattedPhone = phoneNumber.formatInternational(); // e.g., '+1 945 102 1388'
+    }
     const data = {
       fullName: form.fullName,
       businessName: form.businessName,
       email: form.email,
-      phone: form.phone,
+      phone: formattedPhone,
       website: form.website,
       projectDescription: form.projectDescription,
       reasonForPartnership: form.reasonForPartnership,
@@ -289,12 +299,28 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
                 {fieldErrors.email && <div className="text-red-600 text-xs mt-1">{fieldErrors.email}</div>}
               </div>
               <div>
-                <TextInput
-                  placeholder="Phone *"
-                  name="phone"
+                {/* Phone input with country flag and code */}
+                <PhoneInput
+                  country={'us'}
                   value={form.phone}
-                  onChange={handleChange}
-                  required
+                  onChange={(phone, data) => {
+                    setForm(prev => ({ ...prev, phone: phone }));
+                    setPhoneCountry(data.countryCode || 'us');
+                    setFieldErrors(prev => ({ ...prev, phone: undefined }));
+                  }}
+                  inputProps={{
+                    name: 'phone',
+                    required: true,
+                    autoFocus: false,
+                  }}
+                  inputClass="custom-phone-input"
+                  buttonClass="custom-phone-flag-btn"
+                  containerClass="custom-phone-container"
+                  dropdownClass="custom-phone-dropdown"
+                  placeholder="xxx xx xx"
+                  specialLabel=""
+                  enableSearch
+                  disableSearchIcon={false}
                 />
                 {fieldErrors.phone && <div className="text-red-600 text-xs mt-1">{fieldErrors.phone}</div>}
               </div>
@@ -422,6 +448,7 @@ const ApplicationForm = ({ industryFocusTabs, supportNeededTabs }) => {
           </form>
         </div>
       </Container>
+
     </BackgroundBlock>
   );
 };
